@@ -1,0 +1,81 @@
+﻿@using System.Collections.Generic
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h5>@OpcoesDisponiveis</h5>
+            <select multiple class="form-control" @onchange="OnAvailableItemsSelected">
+                @foreach (var item in AvailableItems)
+                {
+                    <option value="@item.IdEvidencia">@item.Descricao</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2 d-flex flex-column justify-content-center">
+            <button class="btn btn-primary mb-2" @onclick="MoveToSelected"><i class="fa-solid fa-arrow-right"></i></button>
+            <button class="btn btn-primary" @onclick="MoveToAvailable"><i class="fa-solid fa-arrow-left"></i></button>
+        </div>
+        <div class="col-md-5">
+            <h5>@OpcoesSelecionadas</h5>
+            <select multiple class="form-control" @onchange="OnSelectedItemsSelected">
+                @if(SelectedItems != null)
+                {
+                    @foreach (var item in SelectedItems)
+                    {
+                        <option value="@item.IdEvidencia">@item.Descricao</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<int> _availableItemsSelected = new List<int>();
+    private List<int> _selectedItemsSelected = new List<int>();
+    [Parameter]
+    public string OpcoesDisponiveis { get; set; }
+    [Parameter]
+    public string OpcoesSelecionadas { get; set; }
+    [Parameter]
+    public List<Evidencia> AvailableItems { get; set; } = new List<Evidencia>();
+
+    [Parameter]
+    public List<Evidencia> SelectedItems { get; set; } = new List<Evidencia>();
+
+    private void OnAvailableItemsSelected(ChangeEventArgs e)
+    {
+        _availableItemsSelected.Clear();
+        var selectedOptions = ((IEnumerable<object>)e.Value).Cast<string>().Select(int.Parse).ToList();
+        _availableItemsSelected.AddRange(selectedOptions);
+    }
+
+    private void OnSelectedItemsSelected(ChangeEventArgs e)
+    {
+        _selectedItemsSelected.Clear();
+        var selectedOptions = ((IEnumerable<object>)e.Value).Cast<string>().Select(int.Parse).ToList();
+        _selectedItemsSelected.AddRange(selectedOptions);
+    }
+
+    private void MoveToSelected()
+    {
+        var itemsToMove = AvailableItems.Where(item => _availableItemsSelected.Contains(item.IdEvidencia)).ToList();
+        foreach (var item in itemsToMove)
+        {
+            AvailableItems.Remove(item);
+            SelectedItems.Add(item);
+        }
+        _availableItemsSelected.Clear();
+    }
+
+    private void MoveToAvailable()
+    {
+        var itemsToMove = SelectedItems.Where(item => _selectedItemsSelected.Contains(item.IdEvidencia)).ToList();
+        foreach (var item in itemsToMove)
+        {
+            SelectedItems.Remove(item);
+            AvailableItems.Add(item);
+        }
+        _selectedItemsSelected.Clear();
+    }
+}

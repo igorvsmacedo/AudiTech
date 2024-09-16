@@ -1,0 +1,76 @@
+﻿@inject ToastService ToastService
+@using System.Timers;   
+@code {
+    private string toastClass = "";
+    private string heading;
+    private string message;
+    private Timer timer;
+
+    protected override void OnInitialized()
+    {
+        ToastService.OnShow += ShowToast;
+        ToastService.OnHide += HideToast;
+    }
+
+    private void ShowToast(string message, string heading, ToastLevel level)
+    {
+        InvokeAsync(() =>
+        {
+            this.message = message;
+            this.heading = heading;
+            toastClass = level switch
+            {
+                ToastLevel.Info => "bg-info text-white",
+                ToastLevel.Success => "bg-success text-white",
+                ToastLevel.Warning => "bg-warning text-dark",
+                ToastLevel.Error => "bg-danger text-white",
+                _ => "bg-info text-white"
+            };
+
+            timer?.Dispose();
+            timer = new Timer(5000);
+            timer.Elapsed += (sender, args) => { HideToast(); };
+            timer.Start();
+
+            StateHasChanged();
+        });
+    }
+
+    private void HideToast()
+    {
+        InvokeAsync(() =>
+        {
+            toastClass = "";
+            message = string.Empty;
+            heading = string.Empty;
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        ToastService.OnShow -= ShowToast;
+        ToastService.OnHide -= HideToast;
+    }
+}
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="toast @toastClass show" role="alert">
+            <div class="toast-header">
+                <strong class="me-auto">@heading</strong>
+                <button type="button" class="btn-close" aria-label="Close" @onclick="HideToast"></button>
+            </div>
+            <div class="toast-body">
+                @message
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .toast-container {
+        z-index: 1100;
+    }
+</style>

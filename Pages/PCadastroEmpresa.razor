@@ -1,0 +1,199 @@
+﻿@using VSM.Models;
+@using ControleAuditorias.Componentes;
+@using Microsoft.Data.SqlClient;
+ @using System;
+ @using VSM.Service;
+@using MySql.Data.MySqlClient;
+  @inject daoAuditoria vm;
+@inject  ToastService ToastService
+@page "/Cadastros/Empresa"
+
+<h3>Cadastro de Empresa</h3>
+ 
+ <div class="btn-group">
+
+<button class="btn btn-primary" @onclick="OpenModal">Novo <i class="fa-solid fa-plus"></i></button>
+<button class="btn btn-primary" @onclick="refreshGrid">Recarregar  <i class="fa-solid fa-arrows-rotate"></i></button>
+ </div>
+<Modal @ref="modal"   Titulo="Cadastro de Empresa" > 
+    <Body>
+         <EditForm Model="@(vm.Sel.empresaCadastro)" OnValidSubmit="cadastraEmpresa">
+             <DataAnnotationsValidator></DataAnnotationsValidator>
+                 <div class="mb-3"      >
+                    <label for="Nome" class="form-label">Nome</label>
+                    <input id="Nome" class="form-control" @bind="@vm.Sel.empresaCadastro.Nome"/>
+                <ValidationMessage For="@(()=> vm.Sel.empresaCadastro.Nome )"></ValidationMessage>
+                </div>
+                 <div class="mb-3">
+
+                    <label for="CNPJ">CNPJ</label>
+                <input id="CNPJ" class="form-control" @bind="@vm.Sel.empresaCadastro.CNPJ" />
+                <ValidationMessage For="@(()=> vm.Sel.empresaCadastro.CNPJ )"></ValidationMessage>
+                 </div>
+            <div class="mb-3">
+
+                <label for="Desativado">Desativado</label>
+                <input id="Desativado" type="checkbox" class="form-check-input" @bind="@vm.Sel.empresaCadastro.Desativado" />
+                <ValidationMessage For="@(()=> vm.Sel.empresaCadastro.CNPJ )"></ValidationMessage>
+            </div>
+                <button class="btn btn-success" type="submit">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
+            </EditForm>
+
+    </Body>
+</Modal>
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col"><input type="checkbox" class="form-check-input disabled" disabled/></th>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CNPJ</th>
+                <th scope="col">Desativado</th>
+                <th scope="col">Ação</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            @if(dsEmpresas != null)
+            {
+                @if(dsEmpresas.Count > 0)
+                {
+                    @foreach(var item in dsEmpresas)
+                    {
+                        <tr>
+                            <th scope="row"><input type="checkbox" class="form-check-input"/></th>
+                            <th scope="row">@item.IdEmpresa</th>
+                            <td>@item.Nome</td>
+                            <td>@item.CNPJ</td>
+                            <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Desativado"/></td>
+                            <td><button class="btn btn-danger" @onclick="()=>{excluiEmpresa(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.empresaCadastro = item;isEdit = true; modal.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
+                           
+                        </tr>
+                    }
+                }
+            }
+        
+       
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    private Modal modal  ;
+    Empresa empresaCadastro = new Empresa();
+    List<Empresa>dsEmpresas { get; set; }
+    bool isEdit { get; set; } = false;
+    //  DbContexto dbC = new DbContexto();
+
+    private List<string> availableItems = new List<string> { "Item 1", "Item 2", "Item 3", "Item 4" };
+    private List<string> selectedItems = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        vm.Sel = new();
+        vm.Sel.empresaCadastro = new();
+        dsEmpresas = new List<Empresa>();
+        getEmpresas();
+    }
+    void getEmpresas()
+    {
+        dsEmpresas = vm.getEmpresas();
+
+    }
+    private void OpenModal()
+    {
+        isEdit = false;
+        vm.Sel.empresaCadastro = new();
+        modal.Open();
+    }
+    void refreshGrid()//atualiza informações na tela
+    {
+        getEmpresas();
+        ToastService.ShowToast("Atualizado", "Atualização", ToastLevel.Info);
+    }
+    void cadastraEmpresa()
+    {
+        if (!isEdit)
+        {
+            try
+            {                 
+                vm.cadastraEmpresa(vm.Sel.empresaCadastro);
+                getEmpresas();
+                ShowSuccessToast();
+            }
+
+            catch(Exception e)
+            {
+                ToastService.ShowToast(e.Message, "ERRO", ToastLevel.Error);
+            }
+
+            vm.Sel.empresaCadastro = new();
+
+        }
+        else
+        {
+            try
+            {
+                vm.editaEmpresa(vm.Sel.empresaCadastro);
+                getEmpresas();
+                ShowSuccessToast();
+            }
+
+            catch (Exception e)
+            {
+                ToastService.ShowToast(e.Message, "ERRO", ToastLevel.Error);
+            }
+
+            vm.Sel.empresaCadastro = new();
+        }
+        modal.Close();
+
+    }
+    private void ShowSuccessToast()
+    {
+        string message = "";
+        if (isEdit)
+        {
+            message = "Alterado com sucesso!";
+        }
+        else
+        {
+            message = "Cadastrado com sucesso!";
+        }
+        ToastService.ShowToast(message, "SUCESSO", ToastLevel.Success);
+    }
+
+    private void excluiEmpresa(Empresa empresa)
+    {
+        try
+        {
+            bool exitemDependencias = false;
+            var dep = vm.getAuditoriasPendentes().Where(w => w.IdEmpresa == empresa.IdEmpresa).ToList();
+            exitemDependencias = dep.Count > 0;
+            if (exitemDependencias)
+            {
+                ToastService.ShowToast("Você não pode excluir essa empresa, existem auditorias ativas!", "ERRO", ToastLevel.Error);
+                return;
+
+            }
+            vm.removeEmpresa(empresa);
+            ToastService.ShowToast("Empresa Removida", "SUCESSO", ToastLevel.Success);
+
+            getEmpresas();
+            
+        }
+
+        catch (Exception e)
+        {
+            ToastService.ShowToast(e.Message, "ERRO", ToastLevel.Error);
+        }
+        refreshGrid();
+        // vm.excluiEmpresa();
+    }//LEMBRAR DE CRIAR ESTRUTURA DE DIRETO DE USUARIO
+}
+

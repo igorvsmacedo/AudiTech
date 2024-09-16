@@ -1,0 +1,132 @@
+﻿@page "/Cadastros/Evidencias"
+@using VSM.Service;
+@inject daoAuditoria vm;
+@inject ToastService ToastService
+@using ControleAuditorias.Componentes;
+
+<h3>Evidências</h3>
+<button class="btn btn-primary" @onclick="OpenModal">Nova Evidência <i class="fa-solid fa-plus"></i></button>
+ 
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col"><input type="checkbox" class="form-check-input disabled" disabled /></th>
+                <th scope="col">Evidência</th>
+                <th scope="col">Data Limite</th>
+                <th scope="col">Concluído</th>
+                <th scope="col">Concluído Em</th>
+                <th scope="col">Ação</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (dsEvidencias != null)
+            {
+                @if (dsEvidencias.Count > 0)
+                {
+                    @foreach (var item in dsEvidencias)
+                    {
+                        <tr>
+                            <th scope="row"><input type="checkbox" class="form-check-input" /></th>
+                            <th scope="row">@item.Descricao</th>
+                            <td>@item.DataLimite?.ToShortDateString()</td>
+                            <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Conculuido" /></td>
+                            <td>@item.DataConclusao?.ToShortDateString()</td>
+                            <td><button class="btn btn-danger" @onclick="()=>{excluiEvidencia(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.evidenciaSel = item;isEdit = true; modalAddEvidencia.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
+
+                        </tr>
+                    }
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<Modal @ref="modalAddEvidencia" Titulo="Evidência">
+    <Body>
+        <label for="Descricao">Descrição</label>
+        <textarea id="Descricao" class="form-control" @bind="@vm.Sel.evidenciaSel.Descricao" />
+        <label for="dtLimite">Data Limite</label>
+        <input id="dtLimite" class="form-control" @bind="@vm.Sel.evidenciaSel.DataLimite" type="date" />
+        @if (dsEvidencias != null)
+        {
+
+            <ComboBox Id="comboRef" Label="Referência" Items="evidenciasComponente" @bind-SelectedValue="vm.Sel.evidenciaSel.IdEvidenciaRef"></ComboBox>
+        }
+    </Body>
+    <Footer>
+        <button class="btn btn-success" type="submit" @onclick="cadastraEvidencia">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
+
+    </Footer>
+</Modal>
+
+@code {
+    Modal modalAddEvidencia;
+    bool isEdit { get; set; } = false;
+    List<ComboBox.SelectItem> evidenciasComponente { get; set; } = new();
+    List<Evidencia> dsEvidencias { get; set; } = new();
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        vm.Sel = new();
+        vm.Sel.evidenciaSel = new();
+        getItens();
+    }
+    void getItens()
+    {
+        dsEvidencias = vm.getEvidencias();
+        foreach (var item in dsEvidencias)
+        {
+            if(item.DataConclusao == null)
+            {
+                item.Conculuido = false;
+            }
+            else
+            {
+                item.Conculuido = true;
+            }
+            evidenciasComponente.Add(new ComboBox.SelectItem { Text = item.Descricao, Value = item.IdEvidencia });
+
+        }
+    }
+    void OpenModal()
+    {
+        modalAddEvidencia.Open();
+    }
+    void cadastraEvidencia()
+    {
+        if(vm.Sel.evidenciaSel.IdEvidenciaRef != 0)
+        {
+            var found = vm.dbContext.Evidencia.Find(vm.Sel.evidenciaSel.IdEvidenciaRef).DataLimite;
+            if(vm.Sel.evidenciaSel.DataLimite < found )
+            {
+                ToastService.ShowToast("A Data Limite Não dever ser menor que a data referência (" + found+ ")", "ERRO", ToastLevel.Error);
+                return;
+            }
+        }
+        if (String.IsNullOrEmpty(vm.Sel.evidenciaSel.Descricao))
+        {
+            ToastService.ShowToast("Insira a Descrição!", "ERRO", ToastLevel.Error);
+            return;
+        }
+        if ((vm.Sel.evidenciaSel.DataLimite == null))
+        {
+            ToastService.ShowToast("Insira a data limite!", "ERRO", ToastLevel.Error);
+            return;
+        }
+        vm.cadastraEvidencia(vm.Sel.evidenciaSel);
+        modalAddEvidencia.Close();
+
+        getItens();
+    }
+    void excluiEvidencia(Evidencia evidencia)
+    {
+        vm.excluiEvidencia(evidencia);
+        ToastService.ShowToast("Excluído com sucesso!", "Sucesso!", ToastLevel.Success);
+        getItens();
+    }
+}

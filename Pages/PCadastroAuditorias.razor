@@ -1,0 +1,230 @@
+﻿@page "/Cadastros/Auditoria"
+@using ControleAuditorias.Componentes;
+@using VSM.Service;
+@inject daoAuditoria vm;
+@inject ToastService ToastService
+
+<h3>Cadastro de auditorias</h3>
+
+<button class="btn btn-primary" @onclick="OpenModal">Abrir auditoria <i class="fa-solid fa-plus"></i></button>
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                @*<th scope="col"><input type="checkbox" class="form-check-input disabled" disabled /></th>*@
+                <th scope="col">Empresa</th>
+                <th scope="col">Descrição Auditoria</th>
+                <th scope="col">Encerrada</th>
+                <th scope="col">Aberta Em</th>
+                <th scope="col">Ação</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (dsAuditorias != null)
+            {
+                @if (dsAuditorias.Count > 0)
+                {
+                    @foreach (var item in dsAuditorias)
+                    {
+                        <tr @onclick="() => SelecionarItem(item)" class="@(item == ItemSelecionado ? "table-primary" : "")">
+                            @*<th scope="row"><input type="checkbox" class="form-check-input" /></th>*@
+                            <th scope="row">@item.Empresa.Nome</th>
+                            <td>@item.Descricao</td>
+                            <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Encerrada" /></td> 
+                            <td>@item.DataAbertura.ToShortDateString()</td>
+                            <td><button class="btn btn-danger" @onclick="()=>{excluiAuditoria(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.auditoriaSel = item;isEdit = true; modalAbrirAuditoria.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
+
+                        </tr>
+                    }
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+<Modal @ref="modalAbrirAuditoria">
+    <Body>
+        <ComboBox Id="comboboxAuditoria" Label="Tipo de Auditoria" Items="comboBoxItems" @bind-SelectedValue="vm.Sel.auditoriaSel.IdTipoAuditoria" />
+        <ComboBox Id="comboboxEmpresa" Label="Empresa" Items="comboboxEmpresaItens" @bind-SelectedValue="vm.Sel.auditoriaSel.IdEmpresa" />
+        <label class="form-label">Descrição</label>
+        <textarea class="form-control" @bind="vm.Sel.auditoriaSel.Descricao"></textarea>
+    </Body>
+    <Footer>
+        <button class="btn btn-success" type="submit" @onclick="cadastraAuditoria">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
+
+    </Footer>
+</Modal>
+@{
+    string title = "Plano de Ação Auditoria: " + ItemSelecionado?.Descricao;
+}
+<Modal @ref="modalAbrirPlanoAcao" Titulo="@title">
+    <Body>
+        
+        <label class="form-label">Correção</label>
+        <textarea class="form-control" @bind="vm.Sel.planoAcaoSel.Descricao"></textarea>
+            <label for="dtLimite">Data Limite</label>
+        <input id="dtLimite" class="form-control" @bind="@vm.Sel.planoAcaoSel.DataLimite" type="date" />
+    </Body>
+    <Footer>
+        <button class="btn btn-success" type="submit" @onclick="cadastraPlanoAcao">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
+
+    </Footer>
+</Modal>
+
+@*
+<Modal @ref="modalEvidencias" >
+    <Body>
+        <PCadastroEvidencias></PCadastroEvidencias>
+    </Body>
+</Modal>
+
+*@
+@if (ItemSelecionado != null)
+{
+    <label>Descrição da auditoria</label>
+<textarea class="form-control" @bind="ItemSelecionado.Descricao"></textarea>
+}
+@*<ComboBox Id="planoAcao" Label="Selecione o Plano de Ação" Items="dsPA" @bind-SelectedValue="vm.Sel.PaSel.IdPlanoAcao"></ComboBox>*@
+
+<h3>Plano de Ação</h3>
+
+<button class="btn btn-primary mb-2" @onclick="abreModalPA">Adicionar Plano de ação <i class="fa-solid fa-plus"></i></button>
+@*<button class="btn btn-primary mb-2" @onclick="abremodalEvidencias">Adicionar Evidências<i class="fa-solid fa-plus"></i></button>*@
+<ComboBox Id="comboboxPA" Label="Plano Ação" Items="comboboxPlanoAcaoItens" />
+
+<DualListBox AvailableItems="@dsEvidencias" OpcoesDisponiveis="Evidencias" OpcoesSelecionadas="Evidencias no Plano de Ação" SelectedItems="@dsEvidenciasSel"></DualListBox>
+
+<button class="btn btn-success @statusBtnSalvar">Salvar <i class="fa fa-floppy-disk"></i></button>
+
+@code {
+    //DATA SOURCES
+    private List<ComboBox.SelectItem> comboBoxItems = new List<ComboBox.SelectItem>();
+    private List<TipoAuditoria> dsTipoAuditoria { get; set; } = new();
+    private List<ComboBox.SelectItem> comboboxEmpresaItens = new List<ComboBox.SelectItem>();
+    private List<Auditoria> dsAuditorias { get; set; } = new();
+    private List<PlanoAcao> dsPlanoAcao { get; set; } = new();
+    private List<ComboBox.SelectItem> comboboxPlanoAcaoItens = new List<ComboBox.SelectItem>();
+    //DECLARACOES
+    bool isEdit { get; set; } = false;
+    string statusBtnSalvar { get; set; } = "disabled";
+
+    private string selectedValue = "";
+    private Modal? modalAbrirAuditoria { get; set; } = new();
+    private Modal? modalEvidencias { get; set; } = new();
+    private Modal? modalAbrirPlanoAcao { get; set; } = new();
+    private List<Evidencia> dsEvidencias { get; set; } = new();
+    private List<Evidencia> dsEvidenciasSel { get; set; } = new();
+    private List<string> selectedItems = new List<string>();
+    private Auditoria ItemSelecionado = new();
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        vm.Sel = new();
+        vm.Sel.auditoriaSel = new();
+        vm.Sel.planoAcaoSel = new();
+        getItens();
+    }
+    void getItens()
+    {
+        dsTipoAuditoria = vm.getTiposAuditoria(null);
+        foreach(var item in dsTipoAuditoria) //populando ds do combo box
+        {
+            comboBoxItems.Add(new ComboBox.SelectItem { Value = item.IdTipoAuditoria, Text = item.DescricaoTipoAuditoria });
+        }
+        var empresas = vm.getEmpresas().Where(w => w.Desativado != true).ToList();
+        foreach(var itemEmpresa in empresas)
+        {
+            comboboxEmpresaItens.Add(new ComboBox.SelectItem { Value = itemEmpresa.IdEmpresa, Text = itemEmpresa.Nome });
+
+        }
+        dsAuditorias = vm.getAuditoriasPendentes();
+        dsEvidencias = vm.getEvidencias();
+    }
+    void OpenModal()
+    {
+        modalAbrirAuditoria?.Open();
+    }
+    void cadastraAuditoria()
+    {
+        try
+        {
+
+            vm.cadastraAuditoria(vm.Sel.auditoriaSel);
+            getItens();
+            modalAbrirAuditoria?.Close();
+            ToastService.ShowToast("Cadastrado com sucesso!", "Sucesso!", ToastLevel.Success);
+        }
+        catch(Exception e)
+        {
+            ToastService.ShowToast("Erro ao cadastrar auditoria: " + e.Message, "ERRO", ToastLevel.Error);
+        }
+    }
+    void excluiAuditoria(Auditoria audt)
+    {
+        SelecionarItem(audt);
+        if (dsPlanoAcao != null)
+        {            
+            if ( dsPlanoAcao.Count > 0)
+            {
+                ToastService.ShowToast("Você não pode excluir essa auditoria, existem evidências ativas!", "ERRO", ToastLevel.Error);
+                return;
+            }
+        }
+    }
+    void SelecionarItem(Auditoria auditoria)
+    {
+        ItemSelecionado = auditoria;
+        dsPlanoAcao = vm.getPlanoAcao(ItemSelecionado.IdAuditoria);
+        if (vm.Sel.planoAcaoSel == null)
+        {
+            vm.Sel.planoAcaoSel = new();
+        }
+        vm.Sel.planoAcaoSel.IdAuditoria = ItemSelecionado.IdAuditoria;
+        if (dsPlanoAcao.Count > 0)
+        {            
+            foreach(var item in dsPlanoAcao)
+            {
+                comboboxPlanoAcaoItens.Add(new ComboBox.SelectItem { Value = item.IdPlanoAcao, Text = item.Descricao });
+            }
+        }
+        if(ItemSelecionado != null)
+        {
+            statusBtnSalvar = "";
+        }
+    }
+    void cadastraPlanoAcao()
+    {
+        try
+        {
+
+            vm.cadastraPlanoAcao(vm.Sel.planoAcaoSel);
+            getItens();
+            modalAbrirAuditoria?.Close();
+            ToastService.ShowToast("Cadastrado com sucesso!", "Sucesso!", ToastLevel.Success);
+        }
+        catch (Exception e)
+        {
+            ToastService.ShowToast("Erro ao cadastrar plano de ação: " + e.Message, "ERRO", ToastLevel.Error);
+        }
+    }
+    void abreModalPA()
+    {
+        if (ItemSelecionado == null)
+        {
+            ToastService.ShowToast("Selecione a auditoria primeiro!", "ERRO", ToastLevel.Error);
+            return;
+        }
+        modalAbrirPlanoAcao?.Open();
+    }
+    void abremodalEvidencias()
+    {
+        vm.Sel = new();
+        vm.Sel.evidenciaSel = new();
+        modalEvidencias?.Open();
+    }
+}

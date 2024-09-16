@@ -1,0 +1,85 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ControleAuditorias
+build_property.RootNamespace = ControleAuditorias
+build_property.ProjectDir = C:\Users\igorv\source\repos\ControleAuditorias\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\igorv\source\repos\ControleAuditorias
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Componentes/ComboBox.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcQ29tYm9Cb3gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Componentes/DualListBox.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcRHVhbExpc3RCb3gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Componentes/Modal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroAuditorias.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvQXVkaXRvcmlhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroEmpresa.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvRW1wcmVzYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroEvidencias.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvRXZpZGVuY2lhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Shared/Toast.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRvYXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-t4nvzud06y
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kjg4441gad
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

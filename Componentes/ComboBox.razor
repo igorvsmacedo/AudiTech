@@ -1,0 +1,48 @@
+﻿@using System.Collections.Generic
+
+<div class="form-group">
+    <label for="@Id">@Label</label>
+    <select class="form-control" id="@Id" @bind="SelectedValue">
+        <option value="">Selecione uma opção</option>
+        @foreach (var item in Items)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; } = "comboBox";
+
+    [Parameter]
+    public string Label { get; set; } = "Escolha";
+
+    [Parameter]
+    public List<SelectItem> Items { get; set; } = new List<SelectItem>();
+
+    [Parameter]
+    public EventCallback<int> SelectedValueChanged { get; set; }
+
+    private int _selectedValue;
+
+    [Parameter]
+    public int SelectedValue
+    {
+        get => _selectedValue;
+        set
+        {
+            if (_selectedValue != value)
+            {
+                _selectedValue = value;
+                SelectedValueChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    public class SelectItem
+    {
+        public int Value { get; set; }
+        public string Text { get; set; } = string.Empty;
+    }
+}
