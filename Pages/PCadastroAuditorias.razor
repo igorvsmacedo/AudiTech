@@ -129,17 +129,34 @@
         vm.Sel.planoAcaoSel = new();
         getItens();
     }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if(firstRender)
+        {
+            getItens();
+
+        }
+    }
     void getItens()
     {
         dsTipoAuditoria = vm.getTiposAuditoria(null);
         foreach(var item in dsTipoAuditoria) //populando ds do combo box
         {
-            comboBoxItems.Add(new ComboBox.SelectItem { Value = item.IdTipoAuditoria, Text = item.DescricaoTipoAuditoria });
+            List<ComboBox.SelectItem> itemExistente = comboBoxItems.Where(w => w.Value == item.IdTipoAuditoria).ToList();
+            if(itemExistente.Count < 1)
+            {
+                comboBoxItems.Add(new ComboBox.SelectItem { Value = item.IdTipoAuditoria, Text = item.DescricaoTipoAuditoria });
+            }
         }
         var empresas = vm.getEmpresas().Where(w => w.Desativado != true).ToList();
         foreach(var itemEmpresa in empresas)
         {
-            comboboxEmpresaItens.Add(new ComboBox.SelectItem { Value = itemEmpresa.IdEmpresa, Text = itemEmpresa.Nome });
+            List<ComboBox.SelectItem> itemExistente = comboboxEmpresaItens.Where(w=> w.Value == itemEmpresa.IdEmpresa).ToList();
+            if(itemExistente.Count < 1)
+            {
+                comboboxEmpresaItens.Add(new ComboBox.SelectItem { Value = itemEmpresa.IdEmpresa, Text = itemEmpresa.Nome });                
+            }
 
         }
         dsAuditorias = vm.getAuditoriasPendentes();
@@ -147,21 +164,50 @@
     }
     void OpenModal()
     {
+        clearForm();
         modalAbrirAuditoria?.Open();
+    }
+    void clearForm()
+    {
+        vm.Sel.auditoriaSel = new();
     }
     void cadastraAuditoria()
     {
         try
         {
-
-            vm.cadastraAuditoria(vm.Sel.auditoriaSel);
+            if(vm.Sel.auditoriaSel.IdTipoAuditoria == 0)
+            {
+                ToastService.ShowToast("Selecione o tipo de auditoria!", "ERRO", ToastLevel.Error);
+                return;
+            }
+            if (vm.Sel.auditoriaSel.IdTipoAuditoria == 0)
+            {
+                ToastService.ShowToast("Selecione a empresa!", "ERRO", ToastLevel.Error);
+                return;
+            }
+            if(String.IsNullOrEmpty(vm.Sel.auditoriaSel.Descricao))
+            {
+                ToastService.ShowToast("Digite a descrição para continuar!", "ERRO", ToastLevel.Error);
+                return;
+            }
+            if (!isEdit)
+            {
+                vm.cadastraAuditoria(vm.Sel.auditoriaSel);                
+            }
+            else
+            {
+                vm.editaAuditoria(vm.Sel.auditoriaSel);
+            }
             getItens();
             modalAbrirAuditoria?.Close();
-            ToastService.ShowToast("Cadastrado com sucesso!", "Sucesso!", ToastLevel.Success);
+            string msg = isEdit ? "Editado com sucesso!" : "Cadastrado com sucesso!";
+            ToastService.ShowToast(msg, "Sucesso!", ToastLevel.Success);
+
         }
         catch(Exception e)
         {
-            ToastService.ShowToast("Erro ao cadastrar auditoria: " + e.Message, "ERRO", ToastLevel.Error);
+            string msg = e.InnerException != null ? e.InnerException.Message : e.Message;
+            ToastService.ShowToast("Erro ao cadastrar auditoria: " + msg, "ERRO", ToastLevel.Error);
         }
     }
     void excluiAuditoria(Auditoria audt)
@@ -179,22 +225,29 @@
     void SelecionarItem(Auditoria auditoria)
     {
         ItemSelecionado = auditoria;
-        dsPlanoAcao = vm.getPlanoAcao(ItemSelecionado.IdAuditoria);
-        if (vm.Sel.planoAcaoSel == null)
-        {
-            vm.Sel.planoAcaoSel = new();
-        }
-        vm.Sel.planoAcaoSel.IdAuditoria = ItemSelecionado.IdAuditoria;
-        if (dsPlanoAcao.Count > 0)
+        try
         {            
-            foreach(var item in dsPlanoAcao)
+            dsPlanoAcao = vm.getPlanoAcao(ItemSelecionado.IdAuditoria);
+            if (vm.Sel.planoAcaoSel == null)
             {
-                comboboxPlanoAcaoItens.Add(new ComboBox.SelectItem { Value = item.IdPlanoAcao, Text = item.Descricao });
+                vm.Sel.planoAcaoSel = new();
+            }
+            vm.Sel.planoAcaoSel.IdAuditoria = ItemSelecionado.IdAuditoria;
+            if (dsPlanoAcao.Count > 0)
+            {            
+                foreach(var item in dsPlanoAcao)
+                {
+                    comboboxPlanoAcaoItens.Add(new ComboBox.SelectItem { Value = item.IdPlanoAcao, Text = item.Descricao });
+                }
+            }
+            if(ItemSelecionado != null)
+            {
+                statusBtnSalvar = "";
             }
         }
-        if(ItemSelecionado != null)
+        catch(Exception e)
         {
-            statusBtnSalvar = "";
+            ToastService.ShowToast(e.Message, "Erro", ToastLevel.Error);
         }
     }
     void cadastraPlanoAcao()

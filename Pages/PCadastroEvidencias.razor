@@ -95,7 +95,12 @@
     }
     void OpenModal()
     {
+        clearForm();
         modalAddEvidencia.Open();
+    }
+    void clearForm()
+    {
+        vm.Sel.evidenciaSel = new();
     }
     void cadastraEvidencia()
     {
@@ -118,8 +123,16 @@
             ToastService.ShowToast("Insira a data limite!", "ERRO", ToastLevel.Error);
             return;
         }
-        vm.cadastraEvidencia(vm.Sel.evidenciaSel);
-        modalAddEvidencia.Close();
+        if (!isEdit)
+        {
+            vm.cadastraEvidencia(vm.Sel.evidenciaSel);
+            modalAddEvidencia.Close();            
+        }
+        else
+        {
+            vm.editaEvidencia(vm.Sel.evidenciaSel);
+            modalAddEvidencia.Close();
+        }
 
         getItens();
     }
