@@ -313,3 +313,5 @@ C:\Users\igorv\source\repos\ControleAuditorias\obj\Debug\net7.0\refint\ControleA
 C:\Users\igorv\source\repos\ControleAuditorias\obj\Debug\net7.0\ControleAuditorias.pdb
 C:\Users\igorv\source\repos\ControleAuditorias\obj\Debug\net7.0\ControleAuditorias.genruntimeconfig.cache
 C:\Users\igorv\source\repos\ControleAuditorias\obj\Debug\net7.0\ref\ControleAuditorias.dll
+C:\Users\igorv\source\repos\ControleAuditorias\bin\Debug\net7.0\SendGrid.dll
+C:\Users\igorv\source\repos\ControleAuditorias\bin\Debug\net7.0\StarkbankEcdsa.dll

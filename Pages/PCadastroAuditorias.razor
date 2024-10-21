@@ -53,6 +53,7 @@
         <ComboBox Id="comboboxEmpresa" Label="Empresa" Items="comboboxEmpresaItens" @bind-SelectedValue="vm.Sel.auditoriaSel.IdEmpresa" />
         <label class="form-label">Descrição</label>
         <textarea class="form-control" @bind="vm.Sel.auditoriaSel.Descricao"></textarea>
+        <input type="checkbox" class="form-control" @bind-value="vm.Sel.auditoriaSel.Encerrada"/>
     </Body>
     <Footer>
         <button class="btn btn-success" type="submit" @onclick="cadastraAuditoria">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
@@ -195,7 +196,7 @@
                 vm.cadastraAuditoria(vm.Sel.auditoriaSel);                
             }
             else
-            {
+            {                
                 vm.editaAuditoria(vm.Sel.auditoriaSel);
             }
             getItens();
