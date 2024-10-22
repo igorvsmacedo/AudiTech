@@ -3000,7 +3000,6 @@
       },
       "VSM.Service/1.0.0": {
         "dependencies": {
-          "SendGrid": "9.29.3",
           "VSM.Contexto": "1.0.0"
         },
         "runtime": {
