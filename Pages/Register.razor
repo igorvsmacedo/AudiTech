@@ -1,0 +1,75 @@
+﻿@page "/registro" 
+@using VSM.Service;
+@using VSM.Models;
+ @inject NavigationManager Navigation
+@inject daoAuditoria vm;
+@inject ToastService toastService;
+
+<h3>Registrar-se</h3>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+<div class="align-items-center">
+    <EditForm Model="usuario" OnValidSubmit="HandleRegistration">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="Email">Nome</label>
+            <InputText id="Email" class="form-control" @bind-Value="usuario.Nome" />
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <InputText id="Email" class="form-control" @bind-Value="usuario.Email" />
+        </div>
+
+        <div class="form-group">
+            <label for="Password">Senha</label>
+            <InputText id="Password" class="form-control" type="password" @bind-Value="usuario.Senha" />
+        </div>
+        <div class="form-group">
+            <label for="Password">Confirme a Senha</label>
+            <InputText id="Password" class="form-control" type="password" @bind-Value="usuario.confirmaSenha" />
+        </div>
+        <button type="submit" class="btn btn-success mt-1"><i class="fa-solid fa-floppy-disk mr-1"></i>Registrar</button>
+    </EditForm>
+
+</div>
+
+@code {
+    private Usuario usuario = new Usuario();
+    private string errorMessage;
+
+    private async Task HandleRegistration()
+    {
+        try{
+
+            if (usuario.Senha != usuario.confirmaSenha)
+            {
+                errorMessage = "As senhas não conferem.";
+                return;
+            }
+
+            var user = new Usuario
+            {
+                Nome = usuario.Nome,
+                Email = usuario.Email,
+                Senha = usuario.Senha
+            };
+
+            vm.cadastraUsuario(user);
+
+            toastService.ShowToast("Cadastrado com sucesso!", "SUCESSO", ToastLevel.Success);
+             
+            Navigation.NavigateTo("/");
+        }
+        catch(Exception e)
+        {
+            toastService.ShowToast("Erro ao cadastrar: " + e.Message, "ERRO", ToastLevel.Error);
+        }
+    }
+  
+}

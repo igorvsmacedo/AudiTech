@@ -1,0 +1,1178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VSM.Models.1.0.0.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:VSM.Models.Fakes.ShimAuditoria">
+            <summary>Tipo de correção de VSM.Models.Auditoria</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoria.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoria.#ctor(VSM.Models.Auditoria)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimAuditoria.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.DataAberturaGet">
+            <summary>Define Shim de Auditoria.get_DataAbertura(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.DataAberturaSetDateTime">
+            <summary>Define Shim de Auditoria.set_DataAbertura(Auditoria this, DateTime value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.DataEncerramentoGet">
+            <summary>Define Shim de Auditoria.get_DataEncerramento(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.DataEncerramentoSetNullableOfDateTime">
+            <summary>Define Shim de Auditoria.set_DataEncerramento(Auditoria this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.DescricaoGet">
+            <summary>Define Shim de Auditoria.get_Descricao(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.DescricaoSetString">
+            <summary>Define Shim de Auditoria.set_Descricao(Auditoria this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.EmpresaGet">
+            <summary>Define Shim de Auditoria.get_Empresa(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.EmpresaSetEmpresa">
+            <summary>Define Shim de Auditoria.set_Empresa(Auditoria this, Empresa value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.EncerradaGet">
+            <summary>Define Shim de Auditoria.get_Encerrada(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.EncerradaSetNullableOfBoolean">
+            <summary>Define Shim de Auditoria.set_Encerrada(Auditoria this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.IdAuditoriaGet">
+            <summary>Define Shim de Auditoria.get_IdAuditoria(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.IdAuditoriaSetInt32">
+            <summary>Define Shim de Auditoria.set_IdAuditoria(Auditoria this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.IdEmpresaGet">
+            <summary>Define Shim de Auditoria.get_IdEmpresa(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.IdEmpresaSetInt32">
+            <summary>Define Shim de Auditoria.set_IdEmpresa(Auditoria this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.IdTipoAuditoriaGet">
+            <summary>Define Shim de Auditoria.get_IdTipoAuditoria(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.AllInstances.IdTipoAuditoriaSetInt32">
+            <summary>Define Shim de Auditoria.set_IdTipoAuditoria(Auditoria this, Int32 value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoria.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoria.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.Constructor">
+            <summary>Define Shim de Auditoria.Auditoria(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.DataAberturaGet">
+            <summary>Define Shim de Auditoria.get_DataAbertura(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.DataAberturaSetDateTime">
+            <summary>Define Shim de Auditoria.set_DataAbertura(Auditoria this, DateTime value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.DataEncerramentoGet">
+            <summary>Define Shim de Auditoria.get_DataEncerramento(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.DataEncerramentoSetNullableOfDateTime">
+            <summary>Define Shim de Auditoria.set_DataEncerramento(Auditoria this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.DescricaoGet">
+            <summary>Define Shim de Auditoria.get_Descricao(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.DescricaoSetString">
+            <summary>Define Shim de Auditoria.set_Descricao(Auditoria this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.EmpresaGet">
+            <summary>Define Shim de Auditoria.get_Empresa(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.EmpresaSetEmpresa">
+            <summary>Define Shim de Auditoria.set_Empresa(Auditoria this, Empresa value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.EncerradaGet">
+            <summary>Define Shim de Auditoria.get_Encerrada(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.EncerradaSetNullableOfBoolean">
+            <summary>Define Shim de Auditoria.set_Encerrada(Auditoria this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.IdAuditoriaGet">
+            <summary>Define Shim de Auditoria.get_IdAuditoria(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.IdAuditoriaSetInt32">
+            <summary>Define Shim de Auditoria.set_IdAuditoria(Auditoria this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.IdEmpresaGet">
+            <summary>Define Shim de Auditoria.get_IdEmpresa(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.IdEmpresaSetInt32">
+            <summary>Define Shim de Auditoria.set_IdEmpresa(Auditoria this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.IdTipoAuditoriaGet">
+            <summary>Define Shim de Auditoria.get_IdTipoAuditoria(Auditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoria.IdTipoAuditoriaSetInt32">
+            <summary>Define Shim de Auditoria.set_IdTipoAuditoria(Auditoria this, Int32 value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimAuditoriaControle">
+            <summary>Tipo de correção de VSM.Models.AuditoriaControle</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoriaControle.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoriaControle.#ctor(VSM.Models.AuditoriaControle)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.auditoriaSelGet">
+            <summary>Define Shim de AuditoriaControle.get_auditoriaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.auditoriaSelSetAuditoria">
+            <summary>Define Shim de AuditoriaControle.set_auditoriaSel(AuditoriaControle this, Auditoria value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.empresaCadastroGet">
+            <summary>Define Shim de AuditoriaControle.get_empresaCadastro(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.empresaCadastroSetEmpresa">
+            <summary>Define Shim de AuditoriaControle.set_empresaCadastro(AuditoriaControle this, Empresa value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.evidenciaSelGet">
+            <summary>Define Shim de AuditoriaControle.get_evidenciaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.evidenciaSelSetEvidencia">
+            <summary>Define Shim de AuditoriaControle.set_evidenciaSel(AuditoriaControle this, Evidencia value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.planoAcaoSelGet">
+            <summary>Define Shim de AuditoriaControle.get_planoAcaoSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.AllInstances.planoAcaoSelSetPlanoAcao">
+            <summary>Define Shim de AuditoriaControle.set_planoAcaoSel(AuditoriaControle this, PlanoAcao value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoriaControle.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimAuditoriaControle.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.Constructor">
+            <summary>Define Shim de AuditoriaControle.AuditoriaControle(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.auditoriaSelGet">
+            <summary>Define Shim de AuditoriaControle.get_auditoriaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.auditoriaSelSetAuditoria">
+            <summary>Define Shim de AuditoriaControle.set_auditoriaSel(AuditoriaControle this, Auditoria value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.empresaCadastroGet">
+            <summary>Define Shim de AuditoriaControle.get_empresaCadastro(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.empresaCadastroSetEmpresa">
+            <summary>Define Shim de AuditoriaControle.set_empresaCadastro(AuditoriaControle this, Empresa value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.evidenciaSelGet">
+            <summary>Define Shim de AuditoriaControle.get_evidenciaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.evidenciaSelSetEvidencia">
+            <summary>Define Shim de AuditoriaControle.set_evidenciaSel(AuditoriaControle this, Evidencia value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.planoAcaoSelGet">
+            <summary>Define Shim de AuditoriaControle.get_planoAcaoSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimAuditoriaControle.planoAcaoSelSetPlanoAcao">
+            <summary>Define Shim de AuditoriaControle.set_planoAcaoSel(AuditoriaControle this, PlanoAcao value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimCertificadora">
+            <summary>Tipo de correção de VSM.Models.Certificadora</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimCertificadora.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimCertificadora.#ctor(VSM.Models.Certificadora)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimCertificadora.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.AllInstances.DesativadoGet">
+            <summary>Define Shim de Certificadora.get_Desativado(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.AllInstances.DesativadoSetBoolean">
+            <summary>Define Shim de Certificadora.set_Desativado(Certificadora this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.AllInstances.IdCertificadoraGet">
+            <summary>Define Shim de Certificadora.get_IdCertificadora(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.AllInstances.IdCertificadoraSetInt32">
+            <summary>Define Shim de Certificadora.set_IdCertificadora(Certificadora this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.AllInstances.NomeGet">
+            <summary>Define Shim de Certificadora.get_Nome(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.AllInstances.NomeSetString">
+            <summary>Define Shim de Certificadora.set_Nome(Certificadora this, String value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimCertificadora.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimCertificadora.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.Constructor">
+            <summary>Define Shim de Certificadora.Certificadora(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.DesativadoGet">
+            <summary>Define Shim de Certificadora.get_Desativado(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.DesativadoSetBoolean">
+            <summary>Define Shim de Certificadora.set_Desativado(Certificadora this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.IdCertificadoraGet">
+            <summary>Define Shim de Certificadora.get_IdCertificadora(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.IdCertificadoraSetInt32">
+            <summary>Define Shim de Certificadora.set_IdCertificadora(Certificadora this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.NomeGet">
+            <summary>Define Shim de Certificadora.get_Nome(Certificadora this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimCertificadora.NomeSetString">
+            <summary>Define Shim de Certificadora.set_Nome(Certificadora this, String value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEmail">
+            <summary>Tipo de correção de VSM.Models.Email</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmail.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmail.#ctor(VSM.Models.Email)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEmail.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.AssuntoGet">
+            <summary>Define Shim de Email.get_Assunto(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.AssuntoSetString">
+            <summary>Define Shim de Email.set_Assunto(Email this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.ConteudoGet">
+            <summary>Define Shim de Email.get_Conteudo(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.ConteudoSetString">
+            <summary>Define Shim de Email.set_Conteudo(Email this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.EnviadoGet">
+            <summary>Define Shim de Email.get_Enviado(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.EnviadoSetBoolean">
+            <summary>Define Shim de Email.set_Enviado(Email this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.IdEmailGet">
+            <summary>Define Shim de Email.get_IdEmail(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AllInstances.IdEmailSetInt32">
+            <summary>Define Shim de Email.set_IdEmail(Email this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AssuntoGet">
+            <summary>Define Shim de Email.get_Assunto(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.AssuntoSetString">
+            <summary>Define Shim de Email.set_Assunto(Email this, String value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmail.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmail.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.Constructor">
+            <summary>Define Shim de Email.Email(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.ConteudoGet">
+            <summary>Define Shim de Email.get_Conteudo(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.ConteudoSetString">
+            <summary>Define Shim de Email.set_Conteudo(Email this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.EnviadoGet">
+            <summary>Define Shim de Email.get_Enviado(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.EnviadoSetBoolean">
+            <summary>Define Shim de Email.set_Enviado(Email this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.IdEmailGet">
+            <summary>Define Shim de Email.get_IdEmail(Email this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmail.IdEmailSetInt32">
+            <summary>Define Shim de Email.set_IdEmail(Email this, Int32 value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEmpresa">
+            <summary>Tipo de correção de VSM.Models.Empresa</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmpresa.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmpresa.#ctor(VSM.Models.Empresa)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEmpresa.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.CNPJGet">
+            <summary>Define Shim de Empresa.get_CNPJ(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.CNPJSetString">
+            <summary>Define Shim de Empresa.set_CNPJ(Empresa this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.DesativadoGet">
+            <summary>Define Shim de Empresa.get_Desativado(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.DesativadoSetBoolean">
+            <summary>Define Shim de Empresa.set_Desativado(Empresa this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.IdEmpresaGet">
+            <summary>Define Shim de Empresa.get_IdEmpresa(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.IdEmpresaSetInt32">
+            <summary>Define Shim de Empresa.set_IdEmpresa(Empresa this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.NomeGet">
+            <summary>Define Shim de Empresa.get_Nome(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.AllInstances.NomeSetString">
+            <summary>Define Shim de Empresa.set_Nome(Empresa this, String value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmpresa.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEmpresa.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.CNPJGet">
+            <summary>Define Shim de Empresa.get_CNPJ(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.CNPJSetString">
+            <summary>Define Shim de Empresa.set_CNPJ(Empresa this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.Constructor">
+            <summary>Define Shim de Empresa.Empresa(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.DesativadoGet">
+            <summary>Define Shim de Empresa.get_Desativado(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.DesativadoSetBoolean">
+            <summary>Define Shim de Empresa.set_Desativado(Empresa this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.IdEmpresaGet">
+            <summary>Define Shim de Empresa.get_IdEmpresa(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.IdEmpresaSetInt32">
+            <summary>Define Shim de Empresa.set_IdEmpresa(Empresa this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.NomeGet">
+            <summary>Define Shim de Empresa.get_Nome(Empresa this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEmpresa.NomeSetString">
+            <summary>Define Shim de Empresa.set_Nome(Empresa this, String value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEvidencia">
+            <summary>Tipo de correção de VSM.Models.Evidencia</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidencia.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidencia.#ctor(VSM.Models.Evidencia)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEvidencia.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.ConculuidoGet">
+            <summary>Define Shim de Evidencia.get_Conculuido(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.ConculuidoSetBoolean">
+            <summary>Define Shim de Evidencia.set_Conculuido(Evidencia this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.DataConclusaoGet">
+            <summary>Define Shim de Evidencia.get_DataConclusao(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.DataConclusaoSetNullableOfDateTime">
+            <summary>Define Shim de Evidencia.set_DataConclusao(Evidencia this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.DataLimiteGet">
+            <summary>Define Shim de Evidencia.get_DataLimite(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.DataLimiteSetNullableOfDateTime">
+            <summary>Define Shim de Evidencia.set_DataLimite(Evidencia this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.DescricaoGet">
+            <summary>Define Shim de Evidencia.get_Descricao(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.DescricaoSetString">
+            <summary>Define Shim de Evidencia.set_Descricao(Evidencia this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.IdEvidenciaGet">
+            <summary>Define Shim de Evidencia.get_IdEvidencia(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.IdEvidenciaRefGet">
+            <summary>Define Shim de Evidencia.get_IdEvidenciaRef(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.IdEvidenciaRefSetInt32">
+            <summary>Define Shim de Evidencia.set_IdEvidenciaRef(Evidencia this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.AllInstances.IdEvidenciaSetInt32">
+            <summary>Define Shim de Evidencia.set_IdEvidencia(Evidencia this, Int32 value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidencia.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidencia.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.ConculuidoGet">
+            <summary>Define Shim de Evidencia.get_Conculuido(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.ConculuidoSetBoolean">
+            <summary>Define Shim de Evidencia.set_Conculuido(Evidencia this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.Constructor">
+            <summary>Define Shim de Evidencia.Evidencia(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.DataConclusaoGet">
+            <summary>Define Shim de Evidencia.get_DataConclusao(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.DataConclusaoSetNullableOfDateTime">
+            <summary>Define Shim de Evidencia.set_DataConclusao(Evidencia this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.DataLimiteGet">
+            <summary>Define Shim de Evidencia.get_DataLimite(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.DataLimiteSetNullableOfDateTime">
+            <summary>Define Shim de Evidencia.set_DataLimite(Evidencia this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.DescricaoGet">
+            <summary>Define Shim de Evidencia.get_Descricao(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.DescricaoSetString">
+            <summary>Define Shim de Evidencia.set_Descricao(Evidencia this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.IdEvidenciaGet">
+            <summary>Define Shim de Evidencia.get_IdEvidencia(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.IdEvidenciaRefGet">
+            <summary>Define Shim de Evidencia.get_IdEvidenciaRef(Evidencia this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.IdEvidenciaRefSetInt32">
+            <summary>Define Shim de Evidencia.set_IdEvidenciaRef(Evidencia this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidencia.IdEvidenciaSetInt32">
+            <summary>Define Shim de Evidencia.set_IdEvidencia(Evidencia this, Int32 value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEvidenciaPlanoAcao">
+            <summary>Tipo de correção de VSM.Models.EvidenciaPlanoAcao</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.#ctor(VSM.Models.EvidenciaPlanoAcao)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.EvidenciaGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_Evidencia(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.EvidenciaSetEvidencia">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_Evidencia(EvidenciaPlanoAcao this, Evidencia value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.IdEvidenciaGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_IdEvidencia(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.IdEvidenciaPAGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_IdEvidenciaPA(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.IdEvidenciaPASetInt32">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_IdEvidenciaPA(EvidenciaPlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.IdEvidenciaSetInt32">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_IdEvidencia(EvidenciaPlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.IdPlanoAcaoGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_IdPlanoAcao(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.IdPlanoAcaoSetInt32">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_IdPlanoAcao(EvidenciaPlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.PlanoAcaoGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_PlanoAcao(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.AllInstances.PlanoAcaoSetPlanoAcao">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_PlanoAcao(EvidenciaPlanoAcao this, PlanoAcao value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.Constructor">
+            <summary>Define Shim de EvidenciaPlanoAcao.EvidenciaPlanoAcao(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.EvidenciaGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_Evidencia(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.EvidenciaSetEvidencia">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_Evidencia(EvidenciaPlanoAcao this, Evidencia value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.IdEvidenciaGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_IdEvidencia(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.IdEvidenciaPAGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_IdEvidenciaPA(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.IdEvidenciaPASetInt32">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_IdEvidenciaPA(EvidenciaPlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.IdEvidenciaSetInt32">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_IdEvidencia(EvidenciaPlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.IdPlanoAcaoGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_IdPlanoAcao(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.IdPlanoAcaoSetInt32">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_IdPlanoAcao(EvidenciaPlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.PlanoAcaoGet">
+            <summary>Define Shim de EvidenciaPlanoAcao.get_PlanoAcao(EvidenciaPlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimEvidenciaPlanoAcao.PlanoAcaoSetPlanoAcao">
+            <summary>Define Shim de EvidenciaPlanoAcao.set_PlanoAcao(EvidenciaPlanoAcao this, PlanoAcao value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimPlanoAcao">
+            <summary>Tipo de correção de VSM.Models.PlanoAcao</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimPlanoAcao.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimPlanoAcao.#ctor(VSM.Models.PlanoAcao)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimPlanoAcao.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.CorrecaoGet">
+            <summary>Define Shim de PlanoAcao.get_Correcao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.CorrecaoSetString">
+            <summary>Define Shim de PlanoAcao.set_Correcao(PlanoAcao this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.DataFinalizacaoGet">
+            <summary>Define Shim de PlanoAcao.get_DataFinalizacao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.DataFinalizacaoSetNullableOfDateTime">
+            <summary>Define Shim de PlanoAcao.set_DataFinalizacao(PlanoAcao this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.DataLimiteGet">
+            <summary>Define Shim de PlanoAcao.get_DataLimite(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.DataLimiteSetNullableOfDateTime">
+            <summary>Define Shim de PlanoAcao.set_DataLimite(PlanoAcao this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.DescricaoGet">
+            <summary>Define Shim de PlanoAcao.get_Descricao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.DescricaoSetString">
+            <summary>Define Shim de PlanoAcao.set_Descricao(PlanoAcao this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.FinalizadoGet">
+            <summary>Define Shim de PlanoAcao.get_Finalizado(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.FinalizadoSetNullableOfBoolean">
+            <summary>Define Shim de PlanoAcao.set_Finalizado(PlanoAcao this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.IdAuditoriaGet">
+            <summary>Define Shim de PlanoAcao.get_IdAuditoria(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.IdAuditoriaSetInt32">
+            <summary>Define Shim de PlanoAcao.set_IdAuditoria(PlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.IdPlanoAcaoGet">
+            <summary>Define Shim de PlanoAcao.get_IdPlanoAcao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.IdPlanoAcaoSetInt32">
+            <summary>Define Shim de PlanoAcao.set_IdPlanoAcao(PlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.ObservacoesGet">
+            <summary>Define Shim de PlanoAcao.get_Observacoes(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.AllInstances.ObservacoesSetString">
+            <summary>Define Shim de PlanoAcao.set_Observacoes(PlanoAcao this, String value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimPlanoAcao.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimPlanoAcao.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.Constructor">
+            <summary>Define Shim de PlanoAcao.PlanoAcao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.CorrecaoGet">
+            <summary>Define Shim de PlanoAcao.get_Correcao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.CorrecaoSetString">
+            <summary>Define Shim de PlanoAcao.set_Correcao(PlanoAcao this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.DataFinalizacaoGet">
+            <summary>Define Shim de PlanoAcao.get_DataFinalizacao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.DataFinalizacaoSetNullableOfDateTime">
+            <summary>Define Shim de PlanoAcao.set_DataFinalizacao(PlanoAcao this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.DataLimiteGet">
+            <summary>Define Shim de PlanoAcao.get_DataLimite(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.DataLimiteSetNullableOfDateTime">
+            <summary>Define Shim de PlanoAcao.set_DataLimite(PlanoAcao this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.DescricaoGet">
+            <summary>Define Shim de PlanoAcao.get_Descricao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.DescricaoSetString">
+            <summary>Define Shim de PlanoAcao.set_Descricao(PlanoAcao this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.FinalizadoGet">
+            <summary>Define Shim de PlanoAcao.get_Finalizado(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.FinalizadoSetNullableOfBoolean">
+            <summary>Define Shim de PlanoAcao.set_Finalizado(PlanoAcao this, Nullable`1 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.IdAuditoriaGet">
+            <summary>Define Shim de PlanoAcao.get_IdAuditoria(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.IdAuditoriaSetInt32">
+            <summary>Define Shim de PlanoAcao.set_IdAuditoria(PlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.IdPlanoAcaoGet">
+            <summary>Define Shim de PlanoAcao.get_IdPlanoAcao(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.IdPlanoAcaoSetInt32">
+            <summary>Define Shim de PlanoAcao.set_IdPlanoAcao(PlanoAcao this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.ObservacoesGet">
+            <summary>Define Shim de PlanoAcao.get_Observacoes(PlanoAcao this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimPlanoAcao.ObservacoesSetString">
+            <summary>Define Shim de PlanoAcao.set_Observacoes(PlanoAcao this, String value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimTipoAuditoria">
+            <summary>Tipo de correção de VSM.Models.TipoAuditoria</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimTipoAuditoria.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimTipoAuditoria.#ctor(VSM.Models.TipoAuditoria)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances.DesativadoGet">
+            <summary>Define Shim de TipoAuditoria.get_Desativado(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances.DesativadoSetBoolean">
+            <summary>Define Shim de TipoAuditoria.set_Desativado(TipoAuditoria this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances.DescricaoTipoAuditoriaGet">
+            <summary>Define Shim de TipoAuditoria.get_DescricaoTipoAuditoria(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances.DescricaoTipoAuditoriaSetString">
+            <summary>Define Shim de TipoAuditoria.set_DescricaoTipoAuditoria(TipoAuditoria this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances.IdTipoAuditoriaGet">
+            <summary>Define Shim de TipoAuditoria.get_IdTipoAuditoria(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.AllInstances.IdTipoAuditoriaSetInt32">
+            <summary>Define Shim de TipoAuditoria.set_IdTipoAuditoria(TipoAuditoria this, Int32 value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimTipoAuditoria.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimTipoAuditoria.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.Constructor">
+            <summary>Define Shim de TipoAuditoria.TipoAuditoria(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.DesativadoGet">
+            <summary>Define Shim de TipoAuditoria.get_Desativado(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.DesativadoSetBoolean">
+            <summary>Define Shim de TipoAuditoria.set_Desativado(TipoAuditoria this, Boolean value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.DescricaoTipoAuditoriaGet">
+            <summary>Define Shim de TipoAuditoria.get_DescricaoTipoAuditoria(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.DescricaoTipoAuditoriaSetString">
+            <summary>Define Shim de TipoAuditoria.set_DescricaoTipoAuditoria(TipoAuditoria this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.IdTipoAuditoriaGet">
+            <summary>Define Shim de TipoAuditoria.get_IdTipoAuditoria(TipoAuditoria this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimTipoAuditoria.IdTipoAuditoriaSetInt32">
+            <summary>Define Shim de TipoAuditoria.set_IdTipoAuditoria(TipoAuditoria this, Int32 value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimUsuario">
+            <summary>Tipo de correção de VSM.Models.Usuario</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimUsuario.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimUsuario.#ctor(VSM.Models.Usuario)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.ShimUsuario.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.EmailGet">
+            <summary>Define Shim de Usuario.get_Email(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.EmailSetString">
+            <summary>Define Shim de Usuario.set_Email(Usuario this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.IdUsuarioGet">
+            <summary>Define Shim de Usuario.get_IdUsuario(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.IdUsuarioSetInt32">
+            <summary>Define Shim de Usuario.set_IdUsuario(Usuario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.NomeGet">
+            <summary>Define Shim de Usuario.get_Nome(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.NomeSetString">
+            <summary>Define Shim de Usuario.set_Nome(Usuario this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.SenhaGet">
+            <summary>Define Shim de Usuario.get_Senha(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.SenhaSetString">
+            <summary>Define Shim de Usuario.set_Senha(Usuario this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.confirmaSenhaGet">
+            <summary>Define Shim de Usuario.get_confirmaSenha(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.AllInstances.confirmaSenhaSetString">
+            <summary>Define Shim de Usuario.set_confirmaSenha(Usuario this, String value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimUsuario.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.ShimUsuario.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.Constructor">
+            <summary>Define Shim de Usuario.Usuario(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.EmailGet">
+            <summary>Define Shim de Usuario.get_Email(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.EmailSetString">
+            <summary>Define Shim de Usuario.set_Email(Usuario this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.IdUsuarioGet">
+            <summary>Define Shim de Usuario.get_IdUsuario(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.IdUsuarioSetInt32">
+            <summary>Define Shim de Usuario.set_IdUsuario(Usuario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.NomeGet">
+            <summary>Define Shim de Usuario.get_Nome(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.NomeSetString">
+            <summary>Define Shim de Usuario.set_Nome(Usuario this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.SenhaGet">
+            <summary>Define Shim de Usuario.get_Senha(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.SenhaSetString">
+            <summary>Define Shim de Usuario.set_Senha(Usuario this, String value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.confirmaSenhaGet">
+            <summary>Define Shim de Usuario.get_confirmaSenha(Usuario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.ShimUsuario.confirmaSenhaSetString">
+            <summary>Define Shim de Usuario.set_confirmaSenha(Usuario this, String value)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubAuditoria">
+            <summary>Tipo stub de VSM.Models.Auditoria</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoria.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoria.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoria.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubAuditoria</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoria.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoria.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubAuditoriaControle">
+            <summary>Tipo stub de VSM.Models.AuditoriaControle</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoriaControle.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoriaControle.AttachBackingFieldToauditoriaSel">
+            <summary>Anexa delegados para emular StubAuditoriaControle.auditoriaSel como uma propriedade com um campo de apoio.</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoriaControle.AttachBackingFieldToempresaCadastro">
+            <summary>Anexa delegados para emular StubAuditoriaControle.empresaCadastro como uma propriedade com um campo de apoio.</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoriaControle.AttachBackingFieldToevidenciaSel">
+            <summary>Anexa delegados para emular StubAuditoriaControle.evidenciaSel como uma propriedade com um campo de apoio.</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoriaControle.AttachBackingFieldToplanoAcaoSel">
+            <summary>Anexa delegados para emular StubAuditoriaControle.planoAcaoSel como uma propriedade com um campo de apoio.</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.AuditoriaSelGet">
+            <summary>Define stub de AuditoriaControle.get_auditoriaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.AuditoriaSelSetAuditoria">
+            <summary>Define stub de AuditoriaControle.set_auditoriaSel(AuditoriaControle this, Auditoria value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.EmpresaCadastroGet">
+            <summary>Define stub de AuditoriaControle.get_empresaCadastro(AuditoriaControle this)</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.EmpresaCadastroSetEmpresa">
+            <summary>Define stub de AuditoriaControle.set_empresaCadastro(AuditoriaControle this, Empresa value)</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.EvidenciaSelGet">
+            <summary>Define stub de AuditoriaControle.get_evidenciaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.EvidenciaSelSetEvidencia">
+            <summary>Define stub de AuditoriaControle.set_evidenciaSel(AuditoriaControle this, Evidencia value)</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubAuditoriaControle.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubAuditoriaControle</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.PlanoAcaoSelGet">
+            <summary>Define stub de AuditoriaControle.get_planoAcaoSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="F:VSM.Models.Fakes.StubAuditoriaControle.PlanoAcaoSelSetPlanoAcao">
+            <summary>Define stub de AuditoriaControle.set_planoAcaoSel(AuditoriaControle this, PlanoAcao value)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.auditoriaSel">
+            <summary>Define stub de AuditoriaControle.get_auditoriaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.empresaCadastro">
+            <summary>Define stub de AuditoriaControle.get_empresaCadastro(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.evidenciaSel">
+            <summary>Define stub de AuditoriaControle.get_evidenciaSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubAuditoriaControle.planoAcaoSel">
+            <summary>Define stub de AuditoriaControle.get_planoAcaoSel(AuditoriaControle this)</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubCertificadora">
+            <summary>Tipo stub de VSM.Models.Certificadora</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubCertificadora.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubCertificadora.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubCertificadora.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubCertificadora</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubCertificadora.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubCertificadora.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubEmail">
+            <summary>Tipo stub de VSM.Models.Email</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEmail.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEmail.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEmail.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubEmail</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEmail.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEmail.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubEmpresa">
+            <summary>Tipo stub de VSM.Models.Empresa</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEmpresa.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEmpresa.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEmpresa.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubEmpresa</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEmpresa.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEmpresa.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubEvidencia">
+            <summary>Tipo stub de VSM.Models.Evidencia</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEvidencia.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEvidencia.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEvidencia.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubEvidencia</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEvidencia.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEvidencia.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubEvidenciaPlanoAcao">
+            <summary>Tipo stub de VSM.Models.EvidenciaPlanoAcao</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEvidenciaPlanoAcao.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEvidenciaPlanoAcao.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubEvidenciaPlanoAcao.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubEvidenciaPlanoAcao</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEvidenciaPlanoAcao.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubEvidenciaPlanoAcao.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubPlanoAcao">
+            <summary>Tipo stub de VSM.Models.PlanoAcao</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubPlanoAcao.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubPlanoAcao.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubPlanoAcao.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubPlanoAcao</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubPlanoAcao.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubPlanoAcao.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubTipoAuditoria">
+            <summary>Tipo stub de VSM.Models.TipoAuditoria</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubTipoAuditoria.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubTipoAuditoria.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubTipoAuditoria.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubTipoAuditoria</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubTipoAuditoria.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubTipoAuditoria.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Fakes.StubUsuario">
+            <summary>Tipo stub de VSM.Models.Usuario</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubUsuario.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubUsuario.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Fakes.StubUsuario.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubUsuario</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubUsuario.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Fakes.StubUsuario.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+        <member name="T:VSM.Models.Modelos.Fakes.ShimEmailDestinatario">
+            <summary>Tipo de correção de VSM.Models.Modelos.EmailDestinatario</summary>
+        </member>
+        <member name="M:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.#ctor">
+            <summary>Inicializa uma nova instância de correção</summary>
+        </member>
+        <member name="M:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.#ctor(VSM.Models.Modelos.EmailDestinatario)">
+            <summary>Inicializa uma nova correção para a instância determinada</summary>
+        </member>
+        <member name="T:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances">
+            <summary>Definir shims para todos os membros de instâncias</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.EmailGet">
+            <summary>Define Shim de EmailDestinatario.get_Email(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.EmailSetEmail">
+            <summary>Define Shim de EmailDestinatario.set_Email(EmailDestinatario this, Email value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.IdEmailDestinatariosGet">
+            <summary>Define Shim de EmailDestinatario.get_IdEmailDestinatarios(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.IdEmailDestinatariosSetInt32">
+            <summary>Define Shim de EmailDestinatario.set_IdEmailDestinatarios(EmailDestinatario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.IdEmailGet">
+            <summary>Define Shim de EmailDestinatario.get_IdEmail(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.IdEmailSetInt32">
+            <summary>Define Shim de EmailDestinatario.set_IdEmail(EmailDestinatario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.IdUsuarioGet">
+            <summary>Define Shim de EmailDestinatario.get_IdUsuario(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.IdUsuarioSetInt32">
+            <summary>Define Shim de EmailDestinatario.set_IdUsuario(EmailDestinatario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.UsuarioGet">
+            <summary>Define Shim de EmailDestinatario.get_Usuario(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.AllInstances.UsuarioSetUsuario">
+            <summary>Define Shim de EmailDestinatario.set_Usuario(EmailDestinatario this, Usuario value)</summary>
+        </member>
+        <member name="M:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.BehaveAsCurrent">
+            <summary>Atribui o comportamento &apos;Current&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="M:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.BehaveAsNotImplemented">
+            <summary>Atribui o comportamento &apos;NotImplemented&apos; para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.Behavior">
+            <summary>Atribui o comportamento para todos os métodos do tipo corrigido</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.Constructor">
+            <summary>Define Shim de EmailDestinatario.EmailDestinatario(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.EmailGet">
+            <summary>Define Shim de EmailDestinatario.get_Email(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.EmailSetEmail">
+            <summary>Define Shim de EmailDestinatario.set_Email(EmailDestinatario this, Email value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.IdEmailDestinatariosGet">
+            <summary>Define Shim de EmailDestinatario.get_IdEmailDestinatarios(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.IdEmailDestinatariosSetInt32">
+            <summary>Define Shim de EmailDestinatario.set_IdEmailDestinatarios(EmailDestinatario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.IdEmailGet">
+            <summary>Define Shim de EmailDestinatario.get_IdEmail(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.IdEmailSetInt32">
+            <summary>Define Shim de EmailDestinatario.set_IdEmail(EmailDestinatario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.IdUsuarioGet">
+            <summary>Define Shim de EmailDestinatario.get_IdUsuario(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.IdUsuarioSetInt32">
+            <summary>Define Shim de EmailDestinatario.set_IdUsuario(EmailDestinatario this, Int32 value)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.UsuarioGet">
+            <summary>Define Shim de EmailDestinatario.get_Usuario(EmailDestinatario this)</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.ShimEmailDestinatario.UsuarioSetUsuario">
+            <summary>Define Shim de EmailDestinatario.set_Usuario(EmailDestinatario this, Usuario value)</summary>
+        </member>
+        <member name="T:VSM.Models.Modelos.Fakes.StubEmailDestinatario">
+            <summary>Tipo stub de VSM.Models.Modelos.EmailDestinatario</summary>
+        </member>
+        <member name="M:VSM.Models.Modelos.Fakes.StubEmailDestinatario.#ctor">
+            <summary>Inicializa uma nova instância</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.StubEmailDestinatario.CallBase">
+            <summary>Obtém ou define um valor que indica se o método base deve ser chamado em vez do comportamento de fallback</summary>
+        </member>
+        <member name="M:VSM.Models.Modelos.Fakes.StubEmailDestinatario.InitializeStub">
+            <summary>Inicializa uma nova instância do type StubEmailDestinatario</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.StubEmailDestinatario.InstanceBehavior">
+            <summary>Obtém ou define o comportamento da instância.</summary>
+        </member>
+        <member name="P:VSM.Models.Modelos.Fakes.StubEmailDestinatario.InstanceObserver">
+            <summary>Obtém ou define o observador de instância.</summary>
+        </member>
+    </members>
+</doc>

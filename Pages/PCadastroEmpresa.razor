@@ -5,9 +5,9 @@
  @using VSM.Service;
 @using MySql.Data.MySqlClient;
   @inject daoAuditoria vm;
-@inject  ToastService ToastService
+@inject  ToastService ToastService 
 @page "/Cadastros/Empresa"
-
+@attribute [Authorize]
 <h3>Cadastro de Empresa</h3>
  
  <div class="btn-group">
@@ -88,8 +88,7 @@
     Empresa empresaCadastro = new Empresa();
     List<Empresa>dsEmpresas { get; set; }
     bool isEdit { get; set; } = false;
-    //  DbContexto dbC = new DbContexto();
-
+    //  DbContexto dbC = new DbContexto(); 
     private List<string> availableItems = new List<string> { "Item 1", "Item 2", "Item 3", "Item 4" };
     private List<string> selectedItems = new List<string>();
 
