@@ -11,11 +11,12 @@
         <div class="top-row px-4">
             <AuthorizeView>
                 <Authorized>
-                    <a href="/logout" target="_blank">Sair</a>
+                    <a href="/identity/account/logout" target="_blank">Sair</a>
                 </Authorized>
             <NotAuthorized>
-                <p>Faça login para continuar</p>
-            </NotAuthorized>
+                    <a href="/identity/account/login" target="_blank">Fazer login</a>
+
+                </NotAuthorized>
             </AuthorizeView>
         </div>
 
