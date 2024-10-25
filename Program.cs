@@ -22,16 +22,15 @@ builder.Services.AddSingleton<ToastService>();
 builder.Services.AddDbContext<IdbContextoBase, dbContexto>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddDbContext<ControleAuditoriasContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ControleAuditoriasContext>();
+
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ControleAuditoriasContext>();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.Cookie.Name = "auth_token";
-        options.LoginPath = "/login";
-        options.Cookie.MaxAge = TimeSpan.FromMinutes(60);
-        options.AccessDeniedPath = "/AcessoNegado";
-    });
- 
+builder.Services.AddAuthentication("Identity.Application").AddCookie();
+
+
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IdbContexto, dbContexto>();
 builder.Services.AddScoped<daoAuditoria>();
