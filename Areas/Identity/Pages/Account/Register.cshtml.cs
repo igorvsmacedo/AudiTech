@@ -12,12 +12,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using VSM.Contexto;
+using VSM.Service;
+using VSM.Models;
 
 namespace ControleAuditorias.Areas.Identity.Pages.Account
 {
@@ -131,8 +136,10 @@ namespace ControleAuditorias.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        dbContexto dbcontexto = new dbContexto();
+                        daoAuditoria vm = new daoAuditoria(dbcontexto);
+                        vm.enviaEmailRegistro(callbackUrl);
+
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
