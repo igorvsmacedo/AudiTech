@@ -1,0 +1,125 @@
+﻿@page "/auditorias"
+@using VSM.Models
+@using VSM.Service;
+@using Componentes;
+@inject daoAuditoria AuditoriaService
+@inject NavigationManager Navigation
+ 
+
+<h3>Auditorias Abertas</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Descrição</th>
+            <th>Data Abertura</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var auditoria in auditoriasAbertas)
+        {
+            <tr class="@GetRowClass(auditoria)">
+                <td>@auditoria.Empresa.Nome</td>
+                <td>@auditoria.Descricao</td>
+                <td>@auditoria.DataAbertura.ToShortDateString()</td>
+                <td>@(auditoria.Encerrada == true ? "Encerrada" : "Aberta")</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="(() => AbrirAuditoria(auditoria))">Abrir</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<ControleAuditorias.Componentes.Modal Titulo="Abrir Auditoria" Body="@Body" Footer="@Footer" @ref="modalAuditoria"></ControleAuditorias.Componentes.Modal>
+
+@code {
+    private List<Auditoria> auditoriasAbertas;
+    private Auditoria auditoriaSelecionada;
+    private PlanoAcao novoPlanoAcao;
+    private List<Evidencia> evidencias;
+    private Modal modalAuditoria;
+
+    protected override void OnInitialized()
+    {
+        auditoriasAbertas = AuditoriaService.getAuditoriasPendentes();
+        novoPlanoAcao = new PlanoAcao();
+        evidencias = new List<Evidencia>();
+    }
+
+    private void AbrirAuditoria(Auditoria auditoria)
+    {
+        auditoriaSelecionada = auditoria ?? new Auditoria();
+        evidencias = AuditoriaService.getEvidencias() ?? new List<Evidencia>();
+        modalAuditoria.Open();
+    }
+
+    private void SalvarPlanoAcao()
+    {
+        if (auditoriaSelecionada != null)
+        {
+            novoPlanoAcao.IdAuditoria = auditoriaSelecionada.IdAuditoria;
+            AuditoriaService.cadastraPlanoAcao(novoPlanoAcao);
+            modalAuditoria.Close();
+            Navigation.NavigateTo("/auditorias");
+        }
+    }
+
+    private void AdicionarEvidencia()
+    {
+        if (evidencias != null)
+        {
+            Evidencia evidencia = new() { Descricao = "Nova Evidência", DataLimite = DateTime.Now.AddDays(7) };
+            evidencias.Add(evidencia);
+        }
+    }
+
+    private RenderFragment Body => @<div>
+        @if (auditoriaSelecionada != null)
+        {
+            <div class="mb-3">
+                <label for="descricaoAuditoria">Descrição</label>
+                <input id="descricaoAuditoria" class="form-control" @bind="auditoriaSelecionada.Descricao" disabled />
+            </div>
+            <div class="mb-3">
+                <label for="dataAbertura">Data Abertura</label>
+                <input id="dataAbertura" class="form-control" value="@auditoriaSelecionada.DataAbertura.ToShortDateString()" disabled />
+            </div>
+            <div class="mb-3">
+                <label for="planoAcaoDescricao">Descrição do Plano de Ação</label>
+                <textarea id="planoAcaoDescricao" class="form-control" @bind="novoPlanoAcao.Descricao"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="dataLimite">Data Limite</label>
+                <input type="date" id="dataLimite" class="form-control" @bind="novoPlanoAcao.DataLimite" />
+            </div>
+            <h5>Evidências</h5>
+            <button class="btn btn-success" @onclick="AdicionarEvidencia">Adicionar Evidência</button>
+            <ul class="list-group mt-2">
+                @foreach (var evidencia in evidencias)
+                {
+                    <li class="list-group-item">
+                        @evidencia.Descricao - @evidencia.DataLimite?.ToShortDateString()
+                    </li>
+                }
+            </ul>
+        }
+    </div>;
+
+    private RenderFragment Footer => @<div>
+        <button class="btn btn-secondary" @onclick="modalAuditoria.Close">Fechar</button>
+        <button class="btn btn-primary" @onclick="SalvarPlanoAcao">Salvar</button>
+    </div>;
+
+    private string GetRowClass(Auditoria auditoria)
+    {
+        if (auditoria.Encerrada == true)
+            return "table-success";
+        else if (auditoria.DataAbertura.Date == DateTime.Today)
+            return "table-warning";
+        else
+            return "table-danger";
+    }
+}

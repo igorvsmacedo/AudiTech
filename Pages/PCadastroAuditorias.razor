@@ -53,7 +53,8 @@
         <ComboBox Id="comboboxEmpresa" Label="Empresa" Items="comboboxEmpresaItens" @bind-SelectedValue="vm.Sel.auditoriaSel.IdEmpresa" />
         <label class="form-label">Descrição</label>
         <textarea class="form-control" @bind="vm.Sel.auditoriaSel.Descricao"></textarea>
-        <input type="checkbox" class="form-control" @bind-value="vm.Sel.auditoriaSel.Encerrada"/>
+         <label for="audtEnc">Encerrada</label>
+        <input id="audtEnc" type="checkbox" @bind-value="vm.Sel.auditoriaSel.Encerrada" />
     </Body>
     <Footer>
         <button class="btn btn-success" type="submit" @onclick="cadastraAuditoria">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
@@ -91,17 +92,95 @@
 <textarea class="form-control" @bind="ItemSelecionado.Descricao"></textarea>
 }
 @*<ComboBox Id="planoAcao" Label="Selecione o Plano de Ação" Items="dsPA" @bind-SelectedValue="vm.Sel.PaSel.IdPlanoAcao"></ComboBox>*@
-
+<br/>
 <h3>Plano de Ação</h3>
+<div class="btn-group">
 
-<button class="btn btn-primary mb-2" @onclick="abreModalPA">Adicionar Plano de ação <i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-primary mb-2" @onclick="abreModalPA">Adicionar Plano de ação <i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-danger mb-2" @onclick="excluiPlanoAcao">Excluir Plano de ação <i class="fa-solid fa-plus"></i></button>
+
+</div>
 @*<button class="btn btn-primary mb-2" @onclick="abremodalEvidencias">Adicionar Evidências<i class="fa-solid fa-plus"></i></button>*@
-<ComboBox Id="comboboxPA" Label="Plano Ação" Items="comboboxPlanoAcaoItens" />
+<ComboBox Id="comboboxPA" Label="Plano Ação" @bind-SelectedValue="vm.Sel.planoAcaoSel.IdPlanoAcao" Items="comboboxPlanoAcaoItens" />
+<br/>
 
-<DualListBox AvailableItems="@dsEvidencias" OpcoesDisponiveis="Evidencias" OpcoesSelecionadas="Evidencias no Plano de Ação" SelectedItems="@dsEvidenciasSel"></DualListBox>
+<TabControl>
+    <TabPage Text="Consulta">
+        @{getItensPlanoAcao();}
+        <div class="tabletable-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        @*<th scope="col"><input type="checkbox" class="form-check-input disabled" disabled /></th>*@
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Concluída</th>
+                        <th scope="col">Data Conclusão</th>
+                        <th scope="col">Data Limite</th>
+                        <th scope="col">Concluir</th>
 
-<button class="btn btn-success @statusBtnSalvar">Salvar <i class="fa fa-floppy-disk"></i></button>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (dsItensPlanoAcao != null)
+                    {
+                        @if (dsItensPlanoAcao.Count > 0)
+                        {
+                            @foreach (var item in dsItensPlanoAcao.OrderByDescending(o=> o.DataLimite).ToList())
+                            {
+                                <tr class="statusEvento" > 
+                                    <th scope="row"><textarea class="form-control" readonly>@item.Descricao</textarea></th>
+                                    <td><input type="checkbox" class="form-check-input disabled"disabled  @bind="item.Concluido" /></td>
+                                    <td>@item.DataConclusao?.ToShortDateString()</td>
+                                    <td>@item.DataLimite?.ToShortDateString()</td>
+                                    <td><button class="btn btn-success" @onclick="()=>{concluiEvento(item);}"><i class="fa-solid fa-check"></i></button> </td>
+                                        
+                                </tr>
+                            }
+                        }
+                    }
 
+
+                </tbody>
+            </table>
+        </div>
+    </TabPage>
+    <TabPage Text="Cadastro de Itens">
+        @{
+            getItensPlanoAcao();
+            if (dsItensPlanoAcao != null)
+            {
+                if (dsItensPlanoAcao.Count > 0)
+                {
+                    foreach (var item in dsItensPlanoAcao)
+                    {
+                        if(!dsEvidenciasSel.Contains(item))
+                        {
+                            dsEvidenciasSel.Add(item);
+                            dsEvidencias.Remove(item);
+
+                        }
+                    }
+                }
+            }
+        }
+                    <h3>Cadastrar itens no plano de ação</h3>
+        <DualListBox AvailableItems="@dsEvidencias" OpcoesDisponiveis="Evidencias" OpcoesSelecionadas="Evidencias no Plano de Ação" SelectedItems="@dsEvidenciasSel"></DualListBox>
+        <button class="btn btn-success @statusBtnSalvar" @onclick="salvaPlanoAcaoAuditoria">Salvar <i class="fa fa-floppy-disk"></i></button>
+    </TabPage>
+</TabControl>
+
+
+<style>
+    .concluido{
+        background-color:lightgreen;
+    }
+    .atrasado{
+
+    }
+
+    .noLimite {
+    }
+</style>
 @code {
     //DATA SOURCES
     private List<ComboBox.SelectItem> comboBoxItems = new List<ComboBox.SelectItem>();
@@ -110,10 +189,11 @@
     private List<Auditoria> dsAuditorias { get; set; } = new();
     private List<PlanoAcao> dsPlanoAcao { get; set; } = new();
     private List<ComboBox.SelectItem> comboboxPlanoAcaoItens = new List<ComboBox.SelectItem>();
+    private List<Evidencia> dsItensPlanoAcao { get; set; } = new();
     //DECLARACOES
     bool isEdit { get; set; } = false;
     string statusBtnSalvar { get; set; } = "disabled";
-
+    //  string statusEvento { get; set; } = "";
     private string selectedValue = "";
     private Modal? modalAbrirAuditoria { get; set; } = new();
     private Modal? modalEvidencias { get; set; } = new();
@@ -125,10 +205,15 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        clearItens();
+        getItens();
+    }
+    void clearItens()
+    {
         vm.Sel = new();
         vm.Sel.auditoriaSel = new();
         vm.Sel.planoAcaoSel = new();
-        getItens();
+        ItemSelecionado = new();
     }
     protected override void OnAfterRender(bool firstRender)
     {
@@ -138,7 +223,7 @@
             getItens();
 
         }
-    }
+    }   
     void getItens()
     {
         dsTipoAuditoria = vm.getTiposAuditoria(null);
@@ -161,7 +246,7 @@
 
         }
         dsAuditorias = vm.getAuditoriasPendentes();
-        dsEvidencias = vm.getEvidencias();
+        dsEvidencias = vm.getEvidencias(); 
     }
     void OpenModal()
     {
@@ -196,7 +281,15 @@
                 vm.cadastraAuditoria(vm.Sel.auditoriaSel);                
             }
             else
-            {                
+            {
+                if (vm.Sel.auditoriaSel.Encerrada == true)
+                {                    
+                    if(existemPlanosAtivos())
+                    {
+                        ToastService.ShowToast("Encerre o plano de ação primeiro!", "ERRO", ToastLevel.Error);
+                        return;
+                    }
+                }
                 vm.editaAuditoria(vm.Sel.auditoriaSel);
             }
             getItens();
@@ -222,6 +315,11 @@
                 return;
             }
         }
+        vm.excluiAuditoria(audt);
+        ToastService.ShowToast("Excluído com sucesso!", "Sucesso!", ToastLevel.Success);
+        clearItens();
+        getItens();
+
     }
     void SelecionarItem(Auditoria auditoria)
     {
@@ -244,7 +342,7 @@
             if(ItemSelecionado != null)
             {
                 statusBtnSalvar = "";
-            }
+            } 
         }
         catch(Exception e)
         {
@@ -257,6 +355,8 @@
         {
 
             vm.cadastraPlanoAcao(vm.Sel.planoAcaoSel);
+            modalAbrirPlanoAcao.Close();
+
             getItens();
             modalAbrirAuditoria?.Close();
             ToastService.ShowToast("Cadastrado com sucesso!", "Sucesso!", ToastLevel.Success);
@@ -273,12 +373,104 @@
             ToastService.ShowToast("Selecione a auditoria primeiro!", "ERRO", ToastLevel.Error);
             return;
         }
+        if (ItemSelecionado.IdAuditoria == 0)
+        {
+            ToastService.ShowToast("Selecione a auditoria primeiro!", "ERRO", ToastLevel.Error);
+            return;
+        }
+
         modalAbrirPlanoAcao?.Open();
+    }
+    void excluiPlanoAcao()
+    {
+        try
+        {
+            if(dsItensPlanoAcao.Count > 0)
+            {
+                ToastService.ShowToast("Existem evidencias nesse plano de ação, exclua todas primeiro!", "ERRO!", ToastLevel.Error);
+                return;
+            }
+            vm.excluiPlanoAcao(vm.Sel.planoAcaoSel);
+            ToastService.ShowToast("Excluído com sucesso!", "Sucesso!", ToastLevel.Success);
+        }
+        catch (Exception e)
+        {
+            ToastService.ShowToast(e.Message, "ERRO!", ToastLevel.Error);
+        }
     }
     void abremodalEvidencias()
     {
         vm.Sel = new();
         vm.Sel.evidenciaSel = new();
         modalEvidencias?.Open();
+    }
+    bool existemPlanosAtivos()
+    {
+        bool state = false;
+        foreach(var item in dsPlanoAcao)
+        {
+            if(item.DataFinalizacao == null)
+            {
+                state = true;
+                return state;
+            }
+            else
+            {
+                state = false;
+            }
+        }
+        return state;
+    }
+    void salvaPlanoAcaoAuditoria()
+    {
+        try
+        {
+            vm.salvaPlanoAcaoAuditoria(vm.Sel.auditoriaSel, vm.Sel.planoAcaoSel, dsEvidenciasSel);
+            ToastService.ShowToast("Salvo com sucesso!", "Sucesso!", ToastLevel.Success);
+        }
+        catch(Exception e)
+        {
+            ToastService.ShowToast(e.Message, "ERRO!", ToastLevel.Error);
+        }
+    }
+    void getItensPlanoAcao()
+    {
+        try
+        {         
+            if(vm.Sel.planoAcaoSel != null)
+            {
+                if(vm.Sel.planoAcaoSel.IdPlanoAcao != 0)
+                {
+
+                    dsItensPlanoAcao = vm.getItensPlanoAcao(vm.Sel.planoAcaoSel.IdPlanoAcao);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            ToastService.ShowToast(e.Message, "ERRO!", ToastLevel.Error);
+        }
+    }
+    void concluiEvento(Evidencia item)
+    {
+        try
+        {    
+            if(item.DataConclusao != null)
+            {
+                ToastService.ShowToast("A evidência já foi concluída anteriormente!", "ERRO!", ToastLevel.Error);
+                return;
+            }
+            item.Concluido = true;
+            item.DataConclusao = DateTime.Now;
+            vm.dbContext.Evidencia.Update(item); 
+            vm.dbContext.SaveChanges();
+            getItensPlanoAcao();
+
+        }
+        catch (Exception e)
+        {
+            ToastService.ShowToast(e.Message, "ERRO!", ToastLevel.Error);
+        }
+      
     }
 }

@@ -6,13 +6,13 @@
 @using MySql.Data.MySqlClient;
   @inject daoAuditoria vm;
 @inject  ToastService ToastService 
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider;
 @page "/Cadastros/Empresa"
 @attribute [Authorize]
 <h3>Cadastro de Empresa</h3>
  
- <div class="btn-group">
-
-<button class="btn btn-primary" @onclick="()=>{vm.enviaEmail(new Email());}">EMAIL TESTE <i class="fa-solid fa-plus"></i></button>
+ <div class="btn-group">      
 <button class="btn btn-primary" @onclick="OpenModal">Novo <i class="fa-solid fa-plus"></i></button>
 <button class="btn btn-primary" @onclick="refreshGrid">Recarregar  <i class="fa-solid fa-arrows-rotate"></i></button>
  </div>
@@ -99,7 +99,25 @@
         vm.Sel.empresaCadastro = new();
         dsEmpresas = new List<Empresa>();
         getEmpresas();
+
+        GetUserLogado();
     }
+    string userName;
+    async Task GetUserLogado()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            userName = user.Identity.Name; // Nome do usuário logado
+        }
+        else
+        {
+            userName = "Usuário não autenticado";
+        }
+    }
+
     void getEmpresas()
     {
         dsEmpresas = vm.getEmpresas();

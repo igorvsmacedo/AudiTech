@@ -28,8 +28,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcRHVhbExpc3RCb3gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/igorv/source/repos/ControleAuditorias/Componentes/EditAuditoriaModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcRWRpdEF1ZGl0b3JpYU1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/igorv/source/repos/ControleAuditorias/Componentes/Modal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Componentes/TabControl.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcVGFiQ29udHJvbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Componentes/TabPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50ZXNcVGFiUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/igorv/source/repos/ControleAuditorias/Pages/Index.razor]
@@ -44,12 +56,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvQXVkaXRvcmlhcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroAuditoriaTestes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvQXVkaXRvcmlhVGVzdGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroEmpresa.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvRW1wcmVzYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroEvidencias.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvRXZpZGVuY2lhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/PCadastroTiposDeAuditoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUENhZGFzdHJvVGlwb3NEZUF1ZGl0b3JpYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/igorv/source/repos/ControleAuditorias/Pages/PparametrosDeEmail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHBhcmFtZXRyb3NEZUVtYWlsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/igorv/source/repos/ControleAuditorias/Pages/Register.razor]

@@ -1,0 +1,73 @@
+﻿<div class="custom-btn-group" role="group">
+    @foreach (TabPage tabPage in Pages)
+    {
+        <button type="button"
+            class="custom-btn @(GetButtonClass(tabPage))"
+            @onclick="@(() => ActivatePage(tabPage))">
+            @tabPage.Text
+        </button>
+    }
+</div>
+
+<CascadingValue Value="this">
+    @ChildContent
+</CascadingValue>
+
+
+
+<style>
+    .custom-btn-group {
+        display: flex;
+        border-bottom: 2px solid #ccc; /* Linha de base abaixo dos botões */
+    }
+
+    .custom-btn {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none; /* Remove bordas do botão padrão */
+        transition: color 0.3s, border-bottom 0.3s; /* Transição suave para cor e borda */
+        background: transparent; /* Fundo transparente para botões */
+    }
+
+        .custom-btn:hover {
+            color: #0056b3; /* Cor ao passar o mouse */
+        }
+
+    .custom-btn-active {
+        font-weight: bold; /* Negrito para o botão ativo */
+        color: #000; /* Cor do texto da aba ativa */
+        border-bottom: 2px solid #007bff; /* Linha sublinhada para a aba ativa */
+    }
+
+    .custom-btn-inactive {
+        color: #007bff; /* Cor do texto das abas inativas */
+    }
+
+</style>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public TabPage ActivePage { get; set; }
+
+    List<TabPage> Pages = new List<TabPage>();
+
+    internal void AddPage(TabPage tabPage)
+    {
+        Pages.Add(tabPage);
+        if (Pages.Count == 1)
+            ActivePage = tabPage;
+        StateHasChanged();
+    }
+
+    string GetButtonClass(TabPage page)
+    {
+        return page == ActivePage ? "custom-btn-active" : "custom-btn-inactive";
+    }
+
+    void ActivatePage(TabPage page)
+    {
+        ActivePage = page;
+    }
+}

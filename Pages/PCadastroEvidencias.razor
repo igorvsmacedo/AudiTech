@@ -27,15 +27,31 @@
                 {
                     @foreach (var item in dsEvidencias)
                     {
-                        <tr>
-                            <th scope="row"><input type="checkbox" class="form-check-input" /></th>
-                            <th scope="row">@item.Descricao</th>
-                            <td>@item.DataLimite?.ToShortDateString()</td>
-                            <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Conculuido" /></td>
-                            <td>@item.DataConclusao?.ToShortDateString()</td>
-                            <td><button class="btn btn-danger" @onclick="()=>{excluiEvidencia(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.evidenciaSel = item;isEdit = true; modalAddEvidencia.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
+                        @if (item.isRecursivo)
+                        {
+                            <tr style="margin-left:2rem;">
+                                <th scope="row"><input type="checkbox" class="form-check-input" /></th>
+                                <th scope="row">@item.Descricao</th>
+                                <td>@item.DataLimite?.ToShortDateString()</td>
+                                <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Concluido" /></td> 
+                                <td>@item.DataConclusao?.ToShortDateString()</td>
+                                <td><button class="btn btn-danger" @onclick="()=>{excluiEvidencia(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.evidenciaSel = item;isEdit = true; modalAddEvidencia.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
 
-                        </tr>
+                            </tr>
+                        }
+                        else
+                        {                            
+                            <tr>
+                                <th scope="row"><input type="checkbox" class="form-check-input" /></th>
+                                <th scope="row">@item.Descricao</th>
+                                <td>@item.DataLimite?.ToShortDateString()</td>
+                                <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Concluido" /></td>
+                                <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.isRecursivo" /></td>
+                                <td>@item.DataConclusao?.ToShortDateString()</td>
+                                <td><button class="btn btn-danger" @onclick="()=>{excluiEvidencia(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.evidenciaSel = item;isEdit = true; modalAddEvidencia.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
+
+                            </tr>
+                        }
                     }
                 }
             }
@@ -83,12 +99,18 @@
         {
             if(item.DataConclusao == null)
             {
-                item.Conculuido = false;
+                item.Concluido = false;
             }
             else
             {
-                item.Conculuido = true;
+                item.Concluido = true;
             }
+            if(item.IdEvidenciaRef != 0)
+            {
+                //var find = dsEvidencias.Where(w => w.IdEvidencia == item.IdEvidenciaRef).FirstOrDefault();
+                item.isRecursivo = true;
+            }
+
             evidenciasComponente.Add(new ComboBox.SelectItem { Text = item.Descricao, Value = item.IdEvidencia });
 
         }
