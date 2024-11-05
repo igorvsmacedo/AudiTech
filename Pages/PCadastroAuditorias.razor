@@ -16,6 +16,7 @@
                 @*<th scope="col"><input type="checkbox" class="form-check-input disabled" disabled /></th>*@
                 <th scope="col">Empresa</th>
                 <th scope="col">Descrição Auditoria</th>
+                <th scope="col">Tipo Auditoria</th>
                 <th scope="col">Encerrada</th>
                 <th scope="col">Aberta Em</th>
                 <th scope="col">Ação</th>
@@ -33,6 +34,7 @@
                             @*<th scope="row"><input type="checkbox" class="form-check-input" /></th>*@
                             <th scope="row">@item.Empresa.Nome</th>
                             <td>@item.Descricao</td>
+                            <td>@item.TipoAuditoria.DescricaoTipoAuditoria</td>
                             <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Encerrada" /></td> 
                             <td>@item.DataAbertura.ToShortDateString()</td>
                             <td><button class="btn btn-danger" @onclick="()=>{excluiAuditoria(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.auditoriaSel = item;isEdit = true; modalAbrirAuditoria.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
@@ -337,7 +339,7 @@
                 foreach(var item in dsPlanoAcao)
                 {
                     ComboBox.SelectItem itemAdd = new ComboBox.SelectItem { Value = item.IdPlanoAcao, Text = item.Descricao };
-                    if (!comboboxPlanoAcaoItens.Contains(itemAdd))
+                    if (!comboboxPlanoAcaoItens.Select(s=> s.Value).Contains(itemAdd.Value))
                     {
                         comboboxPlanoAcaoItens.Add(itemAdd);                        
                     }
@@ -429,6 +431,21 @@
     {
         try
         {
+            List<Evidencia> listDependentes = new();
+            foreach(var item in dsEvidenciasSel)
+            {
+                var referencia = vm.dbContext.Evidencia.Where(w => w.IdEvidenciaRef == item.IdEvidencia).ToList();
+                foreach(var evidencia in referencia){
+
+                    var found = vm.dbContext.Evidencia.Find(evidencia.IdEvidencia);
+                    listDependentes.Add(found);
+                }
+
+            }
+            foreach (var dependente in listDependentes)
+            {
+                dsEvidenciasSel.Add(dependente);
+            }
             vm.salvaPlanoAcaoAuditoria(vm.Sel.auditoriaSel, vm.Sel.planoAcaoSel, dsEvidenciasSel);
             ToastService.ShowToast("Salvo com sucesso!", "Sucesso!", ToastLevel.Success);
         }
@@ -462,6 +479,12 @@
             if(item.DataConclusao != null)
             {
                 ToastService.ShowToast("A evidência já foi concluída anteriormente!", "ERRO!", ToastLevel.Error);
+                return;
+            }
+            bool contemReferencia = vm.dbContext.Evidencia.Where(w => w.IdEvidenciaRef == item.IdEvidencia && w.DataConclusao == null).Count() > 0;
+            if (contemReferencia)
+            {
+                ToastService.ShowToast("Você deve concluir as evendências dependentes primeiro", "ERRO!", ToastLevel.Error);
                 return;
             }
             item.Concluido = true;

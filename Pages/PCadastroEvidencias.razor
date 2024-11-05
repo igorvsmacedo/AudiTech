@@ -1,7 +1,8 @@
 ﻿@page "/Cadastros/Evidencias"
 @using VSM.Service;
 @inject daoAuditoria vm;
-@inject ToastService ToastService
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+@inject ToastService ToastService;
 @using ControleAuditorias.Componentes;
 
 <h3>Evidências</h3>
@@ -45,8 +46,7 @@
                                 <th scope="row"><input type="checkbox" class="form-check-input" /></th>
                                 <th scope="row">@item.Descricao</th>
                                 <td>@item.DataLimite?.ToShortDateString()</td>
-                                <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Concluido" /></td>
-                                <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.isRecursivo" /></td>
+                                <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Concluido" /></td> 
                                 <td>@item.DataConclusao?.ToShortDateString()</td>
                                 <td><button class="btn btn-danger" @onclick="()=>{excluiEvidencia(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.evidenciaSel = item;isEdit = true; modalAddEvidencia.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
 
@@ -83,6 +83,7 @@
 @code {
     Modal modalAddEvidencia;
     bool isEdit { get; set; } = false;
+    string userName = "";
     List<ComboBox.SelectItem> evidenciasComponente { get; set; } = new();
     List<Evidencia> dsEvidencias { get; set; } = new();
     protected override void OnInitialized()
@@ -91,6 +92,12 @@
         vm.Sel = new();
         vm.Sel.evidenciaSel = new();
         getItens();
+
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await GetUserLogado();
+        await base.OnAfterRenderAsync(firstRender);
     }
     void getItens()
     {
@@ -115,6 +122,20 @@
 
         }
     }
+    async Task GetUserLogado()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            userName = user.Identity.Name; // Nome do usuário logado
+        }
+        else
+        {
+            userName = "Usuário não autenticado";
+        }
+    }
     void OpenModal()
     {
         clearForm();
@@ -129,9 +150,9 @@
         if(vm.Sel.evidenciaSel.IdEvidenciaRef != 0)
         {
             var found = vm.dbContext.Evidencia.Find(vm.Sel.evidenciaSel.IdEvidenciaRef).DataLimite;
-            if(vm.Sel.evidenciaSel.DataLimite < found )
+            if(vm.Sel.evidenciaSel.DataLimite > found )
             {
-                ToastService.ShowToast("A Data Limite Não dever ser menor que a data referência (" + found+ ")", "ERRO", ToastLevel.Error);
+                ToastService.ShowToast("A Data Limite Não dever ser maior que a data referência (" + found+ ")", "ERRO", ToastLevel.Error);
                 return;
             }
         }
@@ -147,6 +168,7 @@
         }
         if (!isEdit)
         {
+            vm.Sel.evidenciaSel.EmailNotificacao = userName;
             vm.cadastraEvidencia(vm.Sel.evidenciaSel);
             modalAddEvidencia.Close();            
         }
