@@ -1,5 +1,166 @@
 ﻿@page "/Cadastros/TipoAuditoria"
 
-@code {
+@using VSM.Models;
+@using ControleAuditorias.Componentes;
+@using Microsoft.Data.SqlClient;
+@using System;
+@using VSM.Service;
+@using MySql.Data.MySqlClient;
+@inject daoAuditoria vm;
+@inject ToastService ToastService
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+ 
+@attribute [Authorize]
+<h3>Cadastro de Tipos de Auditoria</h3>
+<div class="btn-group">
+    <button class="btn btn-primary" @onclick="OpenModal">Novo <i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-primary" @onclick="refreshGrid">Recarregar  <i class="fa-solid fa-arrows-rotate"></i></button>
+</div>
 
+<Modal @ref="modal"   Titulo="Cadastro de Tipo de Auditoria" > 
+    <Body>
+         <EditForm Model="@(vm.Sel.tipoAuditoriaSel)" OnValidSubmit="cadastraTipoAuditoria">
+             <DataAnnotationsValidator></DataAnnotationsValidator>
+                 <div class="mb-3"      >
+                    <label for="Nome" class="form-label">Descrição</label>
+                    <input id="Nome" class="form-control" @bind="@vm.Sel.tipoAuditoriaSel.DescricaoTipoAuditoria"/>
+                <ValidationMessage For="@(()=> vm.Sel.tipoAuditoriaSel.DescricaoTipoAuditoria )"></ValidationMessage>
+                </div>
+            <div class="mb-3">
+                <label for="Desativado">Desativado</label>
+            <input id="Desativado" type="checkbox" class="form-check-input" @bind="@vm.Sel.tipoAuditoriaSel.Desativado" />
+                <ValidationMessage For="@(()=> vm.Sel.tipoAuditoriaSel.Desativado )"></ValidationMessage>
+            </div>
+                <button class="btn btn-success" type="submit">Salvar <i class="fa-solid fa-floppy-disk"></i></button>
+            </EditForm>
+
+    </Body>
+</Modal>
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col"><input type="checkbox" class="form-check-input disabled" disabled /></th>
+                <th scope="col">Descrição</th>             
+                <th scope="col">Desativado</th>
+                <th scope="col">Ação</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (dsTiposAuditoria != null)
+            {
+                @if (dsTiposAuditoria.Count > 0)
+                {
+                    @foreach (var item in dsTiposAuditoria)
+                    {
+                        <tr>
+                            <th scope="row"><input type="checkbox" class="form-check-input" /></th>
+                            <th scope="row">@item.DescricaoTipoAuditoria</th>                          
+                            <td><input type="checkbox" class="form-check-input disabled" disabled @bind="item.Desativado" /></td>
+                            <td><button class="btn btn-danger" @onclick="()=>{excluiTipoAuditoria(item);}"><i class="fa-solid fa-trash"></i></button>  <button class="btn btn-secondary" @onclick="()=>{vm.Sel.tipoAuditoriaSel = item;isEdit = true; modal.Open();}"><i class="fa-solid fa-pencil"></i></button></td>
+
+                        </tr>
+                    }
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    private Modal modal;
+    TipoAuditoria tipoCadastro = new TipoAuditoria();
+    List<TipoAuditoria> dsTiposAuditoria { get; set; }
+    bool isEdit { get; set; } = false;
+
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        vm.Sel = new();
+        vm.Sel.tipoAuditoriaSel = new();
+        dsTiposAuditoria = new List<TipoAuditoria>();
+        getTiposAuditoria();
+
+        GetUserLogado();
+    }
+    string userName;
+    async Task GetUserLogado()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            userName = user.Identity.Name; // Nome do usuário logado
+        }
+        else
+        {
+            userName = "Usuário não autenticado";
+        }
+    }
+    void getTiposAuditoria()
+    {
+        dsTiposAuditoria = vm.getTiposAuditoria(true);
+    }
+    private void OpenModal()
+    {
+        isEdit = false;
+        vm.Sel.tipoAuditoriaSel = new();
+        modal.Open();
+    }
+    void refreshGrid()//atualiza informações na tela
+    {
+        getTiposAuditoria();
+        ToastService.ShowToast("Atualizado", "Atualização", ToastLevel.Info);
+    }
+    void excluiTipoAuditoria(TipoAuditoria item)
+    {
+        try
+        {
+            vm.excluiTipoAuditoria(item);
+           
+            refreshGrid();
+            ToastService.ShowToast("Excluido com sucesso!", "SUCESSO", ToastLevel.Success);
+        }
+        catch(Exception e)
+        {
+            ToastService.ShowToast("Erro ao excluir" + e.Message, "ERRO", ToastLevel.Error);
+        }
+    }
+    void cadastraTipoAuditoria()
+    {
+        try
+        {
+            if (!isEdit)
+            {
+                vm.cadastraTipoAuditoria(vm.Sel.tipoAuditoriaSel);
+                modal.Close();
+                refreshGrid();
+                ToastService.ShowToast("Cadastrado com sucesso!", "SUCESSO", ToastLevel.Success);
+
+            }
+            else
+            {
+                vm.editaTipoAuditoria(vm.Sel.tipoAuditoriaSel);
+                modal.Close();
+                refreshGrid();
+                ToastService.ShowToast("Editado com sucesso!", "SUCESSO", ToastLevel.Success);
+
+            }
+        }
+        catch (Exception e)
+        {
+            ToastService.ShowToast("Erro ao cadastrar" + e.Message, "ERRO", ToastLevel.Error);
+        }
+    }
 }

@@ -96,8 +96,8 @@
 <h3>Plano de Ação</h3>
 <div class="btn-group">
 
-    <button class="btn btn-primary mb-2" @onclick="abreModalPA">Adicionar Plano de ação <i class="fa-solid fa-plus"></i></button>
-    <button class="btn btn-danger mb-2" @onclick="excluiPlanoAcao">Excluir Plano de ação <i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-outline-secondary mb-2" @onclick="abreModalPA">Adicionar Plano de ação <i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-outline-secondary mb-2" @onclick="excluiPlanoAcao">Excluir Plano de ação <i class="fa-solid fa-trash"></i></button>
 
 </div>
 @*<button class="btn btn-primary mb-2" @onclick="abremodalEvidencias">Adicionar Evidências<i class="fa-solid fa-plus"></i></button>*@
@@ -336,7 +336,11 @@
             {            
                 foreach(var item in dsPlanoAcao)
                 {
-                    comboboxPlanoAcaoItens.Add(new ComboBox.SelectItem { Value = item.IdPlanoAcao, Text = item.Descricao });
+                    ComboBox.SelectItem itemAdd = new ComboBox.SelectItem { Value = item.IdPlanoAcao, Text = item.Descricao };
+                    if (!comboboxPlanoAcaoItens.Contains(itemAdd))
+                    {
+                        comboboxPlanoAcaoItens.Add(itemAdd);                        
+                    }
                 }
             }
             if(ItemSelecionado != null)
